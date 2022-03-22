@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Cyberjaya</name>
+    <description/>
+    <Style id="icon-22-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/22-blue-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+    </Style>
+    <Style id="icon-22-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/22-blue-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+    </Style>
+    <StyleMap id="icon-22">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-22-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-22-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Style id="icon-22-nodesc-normal">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/22-blue-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>0</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <Style id="icon-22-nodesc-highlight">
+      <IconStyle>
+        <scale>1.1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/22-blue-dot.png</href>
+        </Icon>
+        <hotSpot x="16" xunits="pixels" y="32" yunits="insetPixels"/>
+      </IconStyle>
+      <LabelStyle>
+        <scale>1.1</scale>
+      </LabelStyle>
+      <BalloonStyle>
+        <text><![CDATA[<h3>$[name]</h3>]]></text>
+      </BalloonStyle>
+    </Style>
+    <StyleMap id="icon-22-nodesc">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#icon-22-nodesc-normal</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#icon-22-nodesc-highlight</styleUrl>
+      </Pair>
+    </StyleMap>
+    <Folder>
+      <name>Untitled layer</name>
+      <Placemark>
+        <name>Dell</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.656601,2.910939,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>HP Global Center</name>
+        <description><![CDATA[HP Global Center,<br>Persiaran Rimba Permai, Cyber 8,<br>Cyberjaya 63000, Selangor Darul Ehsan, <br>Malaysia]]></description>
+        <styleUrl>#icon-22</styleUrl>
+        <Point>
+          <coordinates>
+            101.648812,2.910982,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Pappa Rich</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.659069,2.919083,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Al Baraka Arabian Cuisine</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.648877,2.922897,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Padi House</name>
+        <description><![CDATA[Block 3503, Jalan Teknokrat 5,<br>63000 Cyberjaya, Selangor D.E.]]></description>
+        <styleUrl>#icon-22</styleUrl>
+        <Point>
+          <coordinates>
+            101.656837,2.921033,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Old Town White Coffee</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.656387,2.921976,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>The Walk</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.657352,2.92144,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Seri Pinang</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.65894,2.918633,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Petronas</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.658833,2.918118,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ariana Persian Food</name>
+        <description><![CDATA[Jalan Perdana, Cyberjaya, Selangor<br>4801, Suit0-9, Ground Floor,<br>Jalan Perdana,<br>CBD Perdana,<br>63000 Cyberjaya,<br>Selangor.]]></description>
+        <styleUrl>#icon-22</styleUrl>
+        <Point>
+          <coordinates>
+            101.65143,2.922983,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kitchen Village</name>
+        <description><![CDATA[Prima Avenue,<br>Block 3503, Jalan Teknokrat 5,<br>63000, Cyberjaya,<br>Selangor]]></description>
+        <styleUrl>#icon-22</styleUrl>
+        <Point>
+          <coordinates>
+            101.656988,2.921504,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Dengkil (Ng) Seafood</name>
+        <description><![CDATA[Lot 20, Tkt 1, Jln Puchong Dengkil, 43800 Dengkil, Selangor.<br>Tel: 03-87687868 H/P: 012-2182919]]></description>
+        <styleUrl>#icon-22</styleUrl>
+        <Point>
+          <coordinates>
+            101.678976,2.859276,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ah Di Bah Kut Teh</name>
+        <description>Zinc roof</description>
+        <styleUrl>#icon-22</styleUrl>
+        <Point>
+          <coordinates>
+            101.678917,2.859367,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Restaurant Singki</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.679878,2.858622,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Two Two Eight Restaurant</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.674497,2.865142,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>One One Three Restaurant</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.67351,2.866332,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Restoran Hew Hin</name>
+        <description><![CDATA[No. 94, Jalan Besar, Dengkil.<br><br>Very nice prawn loh mee and chili fish]]></description>
+        <styleUrl>#icon-22</styleUrl>
+        <Point>
+          <coordinates>
+            101.679786,2.858686,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Old School Noodle Stall in Dengkil</name>
+        <styleUrl>#icon-22-nodesc</styleUrl>
+        <Point>
+          <coordinates>
+            101.678869,2.859434,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
