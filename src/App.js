@@ -14,7 +14,7 @@ const DefaultLayout = React.lazy(() => import('./containers/DefaultLayout'));
 // Pages
 const Login = React.lazy(() => import('./views/Login'));
 const Main = React.lazy(() => import('./views/_User/Main'));
-const PublicUser = React.lazy(() => import('./containers/PublicUserLayout/Layout'));
+// const PublicUser = React.lazy(() => import('./containers/PublicUserLayout/Layout'));
 // const About = React.lazy(() => import('./views/About'));
 
 class App extends Component {
@@ -26,7 +26,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/login" name="Login Page" render={props => <Login {...props} />} />
             <Route exact path="/main" name="Main Page" render={props => <Main {...props} />} />
-            <Route exact path="/PublicUser" name="PublicUser Page" render={props => <PublicUser {...props} />} />
+            {/* <Route exact path="/PublicUser" name="PublicUser Page" render={props => <PublicUser {...props} />} /> */}
             {/* <Route exact path="/about" name="About" render={props => <About {...props} />} /> */}
             <PrivateRoute path="/" component={DefaultLayout} default='/login' />
           </Switch>

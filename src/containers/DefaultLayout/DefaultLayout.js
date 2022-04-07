@@ -28,6 +28,7 @@ import routes from '../../routes';
 import { connect } from 'react-redux'
 import { Auth, CONSTANTS } from '../../api'
 import { Mqtt } from '../../__ifunc'
+import { Link } from "react-router-dom";
 
 const DefaultAside = React.lazy(() => import('./DefaultAside'));
 const DefaultFooter = React.lazy(() => import('./DefaultFooter'));
@@ -52,6 +53,7 @@ class DefaultLayout extends Component {
     } catch (error) { }
     Auth.removeAuthUser()
     this.props.dispatch({ type: CONSTANTS.CLEAR })
+    window.location.reload(false); //refresh console
     this.props.history.push('/')
   }
 
@@ -59,24 +61,38 @@ class DefaultLayout extends Component {
     // console.log('============DefaultLayout: render()=================')
 
     let _navigation = { items: [] }
+    let _logout = { items: [] };
     let _routes = []
 
     if (Auth.getAuthEnabled()) {
       const user = Auth.getAuthUser()
+      // console.log(user)
       if (typeof (user) !== 'undefined' && user !== null) {
         if (user.role === CONSTANTS.ROLE.ADMIN.toLowerCase()) {
           _navigation = navigation.Admin
+          _logout = navigation.Logout;
           _routes = routes.Admin
         } else if (user.role === CONSTANTS.ROLE.MANAGER.toLowerCase()) {
           _navigation = navigation.Manager
+          _logout = navigation.Logout;
           _routes = routes.Manager
+        }else if (user.role === CONSTANTS.ROLE.STUDENT) {
+          _navigation = navigation.Student
+          _logout = navigation.Logout;
+          _routes = routes.Student
+        }else if (user.role === CONSTANTS.ROLE.TEACHER) {
+          _navigation = navigation.Student
+          _logout = navigation.Logout;
+          _routes = routes.Student
         } else {
           _navigation = navigation.Basic
+          _logout = navigation.Logout;
           _routes = routes.Basic
         }
       }
     } else {
       _navigation = navigation.Basic
+      _logout = navigation.Logout;
       _routes = routes.Basic
     }
     let __local_props = { ...this.props }
@@ -97,6 +113,15 @@ class DefaultLayout extends Component {
               <AppSidebarNav navConfig={_navigation} {...__local_props} router={router} />
             </Suspense>
             <AppSidebarFooter />
+            <Link onClick={(e) => this.signOut(e)}>
+              <Suspense>
+                <AppSidebarNav
+                  navConfig={_logout}
+                  {...__local_props}
+                  router={router}
+                />
+              </Suspense>
+            </Link>
             <AppSidebarMinimizer />
           </AppSidebar>
           <main className="main">

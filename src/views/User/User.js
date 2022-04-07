@@ -154,8 +154,8 @@ class Users extends Component {
         // PUSER = Auth.getAuthUser()
         // userActions.getListUser(PUSER.role, this.props.dispatch)
         UsersActions.getListUser(this.props.dispatch)
-        
-        
+
+
     }
 
     // nextPage = () => {
@@ -225,23 +225,23 @@ class Users extends Component {
                                         <ModalBody>
                                             <Form>
                                                 <InputGroup className="mb-3">
-                                                    <InputGroupAddon addonType="prepend">
+                                                    {/* <InputGroupAddon addonType="prepend"> */}
                                                         <InputGroupText><i className="icon-user"></i></InputGroupText>
-                                                    </InputGroupAddon>
+                                                    {/* </InputGroupAddon> */}
                                                     <Input type="text" placeholder="User Full Name" name="name" autoComplete="useruser" onChange={this.onInputChange} />
                                                 </InputGroup>
                                                 <InputGroup className="mb-3">
-                                                    <InputGroupAddon addonType="prepend">
+                                                    {/* <InputGroupAddon addonType="prepend"> */}
                                                         <InputGroupText>
                                                             <i className="icon-options"></i>
                                                         </InputGroupText>
-                                                    </InputGroupAddon>
+                                                    {/* </InputGroupAddon> */}
                                                     <Input type="text" placeholder="User ID" name="username" autoComplete="userid" onChange={this.onInputChange} />
                                                 </InputGroup>
                                                 <InputGroup className="mb-3">
-                                                    <InputGroupAddon addonType="prepend">
+                                                    {/* <InputGroupAddon addonType="prepend"> */}
                                                         <InputGroupText><i className="icon-lock"></i></InputGroupText>
-                                                    </InputGroupAddon>
+                                                    {/* </InputGroupAddon> */}
                                                     <Input type="password" placeholder="Password" name="password" autoComplete="useruser" onChange={this.onInputChange} />
                                                 </InputGroup>
 

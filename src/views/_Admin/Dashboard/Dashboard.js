@@ -83,7 +83,7 @@ class Dashboard extends Component {
     super(props);
 
     console.log(props)
-    
+
     this.state = {
 
 
@@ -113,18 +113,18 @@ class Dashboard extends Component {
     setInterval(this.getData, 5000); // runs every 5 seconds.
     // const {selectedEvent} = useMainContext();
     // console.log(selectedEvent)
-    
+
   }
 
-  
+
   componentWillUnmount() {
-    window.location.reload()
+    // window.location.reload()
   }
   getData = () => {
     DashboardActions.getLatestData(this.props.dispatch)
     console.log(this.props.dashboard)
-    
-    
+
+
   }
   tick() {
     this.setState({
@@ -141,9 +141,9 @@ class Dashboard extends Component {
     const { data } = this.props.dashboard
     console.log({data})
 
-    
+
     // console.log(this.props.dateCreate)
-    
+
     // const {setEventData, reRenderMarkers} = useMainContext();
     // const [loading, setLoading] = useState(false);
     // //Event to Render
@@ -169,7 +169,7 @@ class Dashboard extends Component {
     //     setRenderEvent(reRenderMarkers);
     //   }
     // }, [reRenderMarkers])
-    
+
     // const [activeKey, setActiveKey] = useState(0)
   return (
     <>
@@ -204,17 +204,17 @@ class Dashboard extends Component {
                 {/* <AccordionItemHeading>
                     <AccordionItemButton>
                         Cyberjaya
-                        
+
                     </AccordionItemButton>
                 </AccordionItemHeading>
                 <AccordionItemPanel> */}
                 {
-                // !loading && 
+                // !loading &&
                 <Search
                 data={data}
-                
+
                 />}
-               
+
 
                 {/* </AccordionItemPanel>
             </AccordionItem>
@@ -235,8 +235,8 @@ class Dashboard extends Component {
   </Col>
   <Col lg="9" style={{ width: 'auto', height: '600px'}}>
     {
-    // !loading ? 
-    <Map style={{width: 'auto', height: '600px'}} 
+    // !loading ?
+    <Map style={{width: 'auto', height: '600px'}}
     data={data} className='shadow p-3 mb-5 bg-white rounded'
     // eventData={renderEvent}
     />

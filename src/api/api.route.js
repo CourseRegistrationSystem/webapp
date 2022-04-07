@@ -1,22 +1,34 @@
-var API_ROUTE = '', MQTT_URL = ''
+var API_ROUTE = '', MQTT_URL = '',TTMS_ROUTE = 'http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?'
 
-if (typeof(window.AppConfig.API_ROUTE) === "undefined") {
-    API_ROUTE = 'http://' + window.location.hostname + ':3034/api'
-} 
-else{
-    API_ROUTE = window.AppConfig.API_ROUTE
-}
+// console.log(typeof(window.AppConfig.TTMS_ROUTE),'oooio')
 
-if (typeof(window.AppConfig.MQTT_URL) === "undefined") {
-    MQTT_URL = 'ws://' + window.location.hostname + ':3890'
-} 
-else {
-    MQTT_URL = window.AppConfig.MQTT_URL
-}
+// if (typeof(window.AppConfig.TTMS_ROUTE) === "undefined") {
+//   // API_ROUTE = 'http://web.fc.utm.my/ttms/web_man_webservice_json.cgi'
+
+
+
+// }
+
+// if (typeof(window.AppConfig.API_ROUTE) === "undefined") {
+//     API_ROUTE = 'http://' + window.location.hostname + ':3034/api'
+// }
+// else{
+//     API_ROUTE = window.AppConfig.API_ROUTE
+// }
+
+// if (typeof(window.AppConfig.MQTT_URL) === "undefined") {
+//     MQTT_URL = 'ws://' + window.location.hostname + ':3890'
+// }
+// else {
+//     MQTT_URL = window.AppConfig.MQTT_URL
+// }
 
 export const SERVER = {
     API: {
         Login: API_ROUTE + '/AppUsers/login',
+        // Login: (username,password) => { return TTMS_ROUTE + `entity=authentication&login=${username}&password=${password}`},
+        // Login: (username,password) => { return TTMS_ROUTE + `entity=authentication&login=B19EC0004&password=980714565035`},
+        // API_ROUTE + '/AppUsers/' + id
         Logout: API_ROUTE + '/AppUsers/logout',
         ChangePassword: API_ROUTE + '/AppUsers/change-password',
         ResetPassword: API_ROUTE + '/AppUsers/reset/password',

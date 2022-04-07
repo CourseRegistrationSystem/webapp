@@ -16,7 +16,7 @@ import {
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
-import bg from '../../assets/img/brand/myavlogo_lg.png'
+import bg from '../../assets/img/brand/CRS Logo.png'
 
 import { Auth } from '../../api'
 import alertify from 'alertifyjs'
@@ -73,19 +73,19 @@ const Login = () => {
                       </div>
                       <Form onSubmit={(e) => { login(e) }}>
                         <InputGroup className="mb-3">
-                          <InputGroupAddon addonType="prepend">
+                          {/* <InputGroupAddon addonType="prepend"> */}
                             <InputGroupText>
                               <i className="icon-user"></i>
                             </InputGroupText>
-                          </InputGroupAddon>
+                          {/* </InputGroupAddon> */}
                           <Input type="text" placeholder="Username" name="username" autoComplete="username" onChange={(e) => { setUsername(e.target.value) }} />
                         </InputGroup>
                         <InputGroup className="mb-4">
-                          <InputGroupAddon addonType="prepend">
+                          {/* <InputGroupAddon addonType="prepend"> */}
                             <InputGroupText>
                               <i className="icon-lock"></i>
                             </InputGroupText>
-                          </InputGroupAddon>
+                          {/* </InputGroupAddon> */}
                           <Input type="password" placeholder="Password" name="password" autoComplete="current-password" onChange={(e) => { setPassword(e.target.value) }} />
                           {/* <button onClick={togglePassword}>Show Password</button> */}
                         </InputGroup>

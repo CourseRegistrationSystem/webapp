@@ -7,7 +7,6 @@ let initState = {
 
 export function dashboard(state = initState, action) {
     //console.log(action)
-    console.log('dah masuk reducer ')
     let _data = []
     let __state = { ...state }
     switch (action.type) {
@@ -67,7 +66,14 @@ export function dashboard(state = initState, action) {
                 console.log('dah masuk reducer dahboard')
                 __state = {...state}
                 __state.data = action.result
-    
+
+            return __state
+
+            case CONSTANTS.DASHBOARD.GET_COURSE_LIST:
+                // console.log('dah masuk reducer dahboard')
+                __state = {...state}
+                __state.data = action.result
+
             return __state
 
         case CONSTANTS.CLEAR:

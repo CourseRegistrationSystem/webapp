@@ -1,4 +1,5 @@
 export * from './profile'
 export * from './dashboard'
+export * from './course'
 export * from './devicedata'
 export * from './users'
