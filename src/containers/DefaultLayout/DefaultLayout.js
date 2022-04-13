@@ -80,10 +80,10 @@ class DefaultLayout extends Component {
           _navigation = navigation.Student
           _logout = navigation.Logout;
           _routes = routes.Student
-        }else if (user.role === CONSTANTS.ROLE.TEACHER) {
-          _navigation = navigation.Student
+        }else if (user.role === CONSTANTS.ROLE.LECTURER) {
+          _navigation = navigation.Lecturer
           _logout = navigation.Logout;
-          _routes = routes.Student
+          _routes = routes.Lecturer
         } else {
           _navigation = navigation.Basic
           _logout = navigation.Logout;

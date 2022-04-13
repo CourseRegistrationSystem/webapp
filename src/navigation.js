@@ -65,9 +65,23 @@ const RegisterNewCourse = {
   icon: 'icon-doc',
 }
 
-const TimeTable = {
+const TimeTableStudent = {
   name: 'Time Table',
-  url: '/TimeTable',
+  url: '/TimeTableStudent',
+  icon: 'icon-calendar',
+}
+
+
+
+const ApproveCourseRegLecturer = {
+  name: 'Approve Course Registration',
+  url: '/ApproveCourseRegLecturer',
+  icon: 'icon-calendar',
+}
+
+const TimeTableLecturer = {
+  name: 'Time Table',
+  url: '/TimeTableLecturer',
   icon: 'icon-calendar',
 }
 
@@ -80,8 +94,8 @@ const Logout = {
 export default {
   Basic: { items: [Dashboard,CarDetails,Analysis, Profile,Users ]},
   Admin: { items: [Dashboard,CarDetails,Analysis,Users ] }, // add Users - demo
-  Manager: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTable] },
-  Student: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTable] },
-  Teacher: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTable] },
+  Manager: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTableStudent] },
+  Student: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTableStudent] },
+  Lecturer: { items: [DashboardStudent,ApproveCourseRegLecturer,TimeTableLecturer] },
   Logout: { items: [Logout]},
 };

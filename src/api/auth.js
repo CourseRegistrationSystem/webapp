@@ -28,7 +28,7 @@ class Auth {
                     console.log(result[0],credentials.password);
                     let role = ''
                     if (credentials.username.length === 9 && credentials.password.length === 12) {role = 'Student'} // A 18 CS 30 26 (9)  20 19 01 M1 02 99 (12)
-                    else if (credentials.username.length === 5 && credentials.password.length === 7) {role = 'Teacher'} // 12 08 5 (5) S808323 (7)
+                    else if (credentials.username.length === 5 && credentials.password.length === 7) {role = 'Lecturer'} // 12 08 5 (5) S808323 (7)
                     else if (credentials.username.length === 6 && credentials.password.length === 8) {role = 'Admin'} //  ad 20 21 (6) sc sx 31 04 (8)
 
                       let AuthData = {

@@ -1,10 +1,20 @@
 import { text } from "@fortawesome/fontawesome-svg-core";
 import { Auth, CONSTANTS, IRequest, SERVER } from "../api";
+import {
+  generateURL,
+  generateLocalStorageName,
+  sortByKey,
+  getLengthToShow,
+} from "../__components/helper";
+import { course } from "../__reducers/course";
+
+import datacurriculum from '../__components/curriculum20/21.json'
 
 export const CourseActions = {
   getLatestData,
   getCourse,
   getTimeTable,
+  getCuriculum,
 };
 
 const user = Auth.getAuthUser();
@@ -32,14 +42,28 @@ async function getCourse(dispatch) {
   try {
     //http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=pelajar_subjek&no_matrik=B19EC0004
 
+    let entityInfo = "";
+    if (user.role === "Student") {
+      entityInfo = {
+        url: "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi",
+        argNum: 1,
+        entity: "pelajar_subjek",
+        args: [{ name: "no_matrik", value: user.matricNo }],
+      };
+    } else if (user.role === "Lecturer") {
+      entityInfo = {
+        url: "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi",
+        argNum: 1,
+        entity: "pensyarah_subjek",
+        args: [{ name: "no_pekerja", value: 27474 }],
+      };
+    }
+    let url = generateURL(entityInfo);
+
     var requestOptions = {
       method: "GET",
     };
-    fetch(
-      "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=pelajar_subjek&no_matrik=" +
-        user.matricNo,
-      requestOptions
-    )
+    fetch(url, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         // console.log(result);
@@ -56,26 +80,90 @@ async function getCourse(dispatch) {
 }
 
 async function getTimeTable(dispatch) {
-  // console.log(session);
-  // console.log(dispatch);
-  // let semester = session.split(" ")
-  // console.log(semester)
   let courseSlotList = [];
+  let courseList = [];
+  let lecturerList = [];
   //http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=pelajar_subjek&no_matrik=B19EC0004
   //http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=jadual_subjek&sesi=2021/2022&semester=2&kod_subjek=SCSD3761&seksyen=1
 
   try {
-    fetch(
-      "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=pelajar_subjek&no_matrik=" +
-        user.matricNo
-    )
+    let entityInfo = "";
+    if (user.role === "Student") {
+      entityInfo = {
+        url: "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi",
+        argNum: 1,
+        entity: "pelajar_subjek",
+        args: [{ name: "no_matrik", value: user.matricNo }],
+      };
+    } else if (user.role === "Lecturer") {
+      entityInfo = {
+        url: "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi",
+        argNum: 1,
+        entity: "pensyarah_subjek",
+        args: [{ name: "no_pekerja", value: 27474 }],
+      };
+    }
+    let url = generateURL(entityInfo);
+
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        
+
+        Promise.all( // lecturer list
+          data.map((dataList) => {
+            return fetch(
+              "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=subjek_pensyarah&kod_subjek=" +
+                  dataList.kod_subjek +
+                  "&sesi=" +
+                  dataList.sesi +
+                  "&semester=" +
+                  dataList.semester +
+                  "&seksyen=" +
+                  dataList.seksyen +
+                  ""
+            );
+          })
+        )
+          .then((responses) =>
+            Promise.all(
+              responses.map((res, index) => {
+                // console.log(index);
+                return res.json();
+              })
+            )
+          )
+          .then((texts) => {
+            // console.log(texts);
+           texts.map((data,index) => {
+            lecturerList.push(data)
+            // courseList.push(data)
+           })
+          //  console.log(lecturerList)
+
+           data.map((data,index) => {
+
+            // console.log(lecturerList[index].length)
+            let lecturers = []
+            lecturerList[index].map((dataLecturer,indexLecturer) => {
+              // console.log(dataLecturer)
+              lecturers.push(dataLecturer)
+            })
+
+            data.lecturer = lecturers
+            courseList.push(data)
+           
+          })
+
+          })
+
+          
+          // data.map((data,index) => {
+          //   courseList.push(data)
+          // })
 
         Promise.all(
           data.map((dataList) => {
-            // console.log(dataList)
             return fetch(
               "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=jadual_subjek&sesi=" +
                 dataList.sesi +
@@ -87,84 +175,70 @@ async function getTimeTable(dispatch) {
                 dataList.seksyen +
                 ""
             );
-            // console.log(dataList)
           })
         )
-          .then((responses) => Promise.all(responses.map((res) => res.json())))
+          .then((responses) =>
+            Promise.all(
+              responses.map((res, index) => {
+                // console.log(index);
+                return res.json();
+              })
+            )
+          )
           .then((texts) => {
-            // console.log(data);
-            // dispatch({ type: CONSTANTS.COURSE.GET_TIMETABLE_LIST, result: texts })
 
             texts.map((dataByCourse, index) => {
               //dataByCourse = the name of the course
+              // texts.map((data,index) => {
 
-              return dataByCourse.map(
-                (
-                  dataInCourse,
-                  index // dataInCourse = there is some course that has more than 1 period
-                ) => {
-                  // console.log(dataInCourse)
+              //  })
 
-                  data.map((course) => {
+              // console.log(index, courseList[index])
 
-                    if (course.kod_subjek === (dataInCourse.kod_subjek)) {
-                      return (
-                        // console.log(dataList),
-                        dataInCourse.course = course,
+              // let _lecturer = lecturerList[index]
+              let _class = courseList[index]
+              // dataByCourse.lecturer = lecturerList[index]
+              // dataByCourse.course = courseList[index]
+              // console.log(dataByCourse)
+
+              return dataByCourse.map((dataInCourse,index) => {  // dataInCourse = there is some course that has more than 1 period
+              
+                  // data.map((course, indexCourse) => {
+                  //   // console.log(index)
+                  //   if (course.kod_subjek === dataInCourse.kod_subjek) {
+                  //     return (
+                    // dataInCourse.lecturer = _lecturer
+                    dataInCourse.course = _class
                         courseSlotList.push(dataInCourse)
-
-                        // dispatch({ type: CONSTANTS.COURSE.GET_TIMETABLE_LIST, result: {courseSlotList} })
-                        // return dispatch;
-                      );
-                    }
-
-                  });
-
-
+                    //   );
+                    // }
+                  // });
                 }
               );
             });
             // console.log(courseSlotList);
+
             dispatch({
               type: CONSTANTS.COURSE.GET_TIMETABLE_LIST,
               result: courseSlotList,
               semester: data[0],
+              courseList : courseList
             });
             // return dispatch;
           });
       });
-
-    // dispatch({ type: CONSTANTS.COURSE.GET_TIMETABLE_LIST, result: 'courseSlotList' })
-    // return dispatch;
   } catch (error) {
     console.log(error);
   }
-
-  // try {
-  //   //http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=pelajar_subjek&no_matrik=B19EC0004
-
-  //   var requestOptions = {
-  //     method: "GET",
-  //   };
-  //   fetch(
-  //     "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=pelajar_subjek&no_matrik=B19EC0004",
-  //     requestOptions
-  //   )
-  //     .then((response) => response.json())
-  //     .then((result) => {
-  //       console.log(result);
-
-  //       Promise.all(result.map(data=>fetch("http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=jadual_subjek&sesi="+data.sesi+"&semester="+data.semester+"&kod_subjek="+data.kod_subjek+"&seksyen="+data.seksyen+"")))
-  //       .then(responses =>Promise.all(responses.map(res => res.json())))
-  //       .then(texts => {
-  //       console.log(texts)})
-  // // dispatch({ type: CONSTANTS.COURSE.GET_COURSE_LIST, result: result });
-
-  //       return dispatch;
-  //     })
-
-  //     .catch((error) => console.log("error", error));
-  // } catch (error) {
-  //   console.log(error);
-  // }
 }
+
+async function getCuriculum(dispatch) {
+  console.log(datacurriculum)
+  dispatch({
+    type: CONSTANTS.COURSE.GET_CURRICULUM_LIST,
+    result: datacurriculum,
+  });
+}
+
+
+      

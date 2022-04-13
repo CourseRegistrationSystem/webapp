@@ -1,0 +1,401 @@
+[
+  {
+     "kredit":3,
+     "tahun_ambil":1,
+     "mod_elektif":null,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":917,
+     "semester_ambil":1,
+     "nama_subjek":"Struktur Diskrit",
+     "kod_subjek":"SCSI1013"
+  },
+  {
+     "tahun_ambil":1,
+     "mod_elektif":null,
+     "kredit":3,
+     "semester_ambil":1,
+     "kod_subjek":"SCSJ1013",
+     "nama_subjek":"Teknik Pengaturcaraan I",
+     "id_kurikulum_subjek":918,
+     "nama_elektif":null
+  },
+  {
+     "kod_subjek":"SCSP1513",
+     "nama_subjek":"Teknologi & Sistem Maklumat ",
+     "semester_ambil":1,
+     "id_kurikulum_subjek":1133,
+     "nama_elektif":null,
+     "mod_elektif":null,
+     "tahun_ambil":1,
+     "kredit":3
+  },
+  {
+     "kredit":3,
+     "tahun_ambil":1,
+     "mod_elektif":null,
+     "id_kurikulum_subjek":953,
+     "nama_elektif":null,
+     "semester_ambil":1,
+     "kod_subjek":"SCSR1013",
+     "nama_subjek":"Logik Digital"
+  },
+  {
+     "semester_ambil":1,
+     "nama_subjek":"Graduate Success Attributes",
+     "kod_subjek":"UHAK1012",
+     "nama_elektif":null,
+     "id_kurikulum_subjek":1134,
+     "tahun_ambil":1,
+     "mod_elektif":null,
+     "kredit":2
+  },
+  {
+     "semester_ambil":1,
+     "kod_subjek":"UHAX1xx2",
+     "nama_subjek":"Elektif UHAX1xx2",
+     "id_kurikulum_subjek":919,
+     "nama_elektif":"Elektif UHAX1xx2",
+     "tahun_ambil":1,
+     "mod_elektif":1,
+     "kredit":2,
+     "pilihan_elektif":"2"
+  },
+  {
+     "id_kurikulum_subjek":1148,
+     "nama_elektif":"Elektif UXXX1012",
+     "kod_subjek":"UXXX1012",
+     "nama_subjek":"Elektif UXXX1012",
+     "semester_ambil":1,
+     "kredit":2,
+     "pilihan_elektif":"2",
+     "mod_elektif":1,
+     "tahun_ambil":1
+  },
+  {
+     "semester_ambil":2,
+     "nama_subjek":"Matematik Komputan",
+     "kod_subjek":"SCSI1113",
+     "nama_elektif":null,
+     "id_kurikulum_subjek":921,
+     "tahun_ambil":1,
+     "mod_elektif":null,
+     "kredit":3
+  },
+  {
+     "kredit":3,
+     "mod_elektif":null,
+     "tahun_ambil":1,
+     "id_kurikulum_subjek":1136,
+     "nama_elektif":null,
+     "kod_subjek":"SCSI1143",
+     "nama_subjek":"Kebarangkalian & Analisis Data Statistik",
+     "semester_ambil":2
+  },
+  {
+     "kredit":3,
+     "tahun_ambil":1,
+     "mod_elektif":null,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":922,
+     "semester_ambil":2,
+     "nama_subjek":"Teknik Pengaturcaraan II",
+     "kod_subjek":"SCSJ1023"
+  },
+  {
+     "id_kurikulum_subjek":1137,
+     "nama_elektif":null,
+     "kod_subjek":"SCSR1033",
+     "nama_subjek":"Organisasi & Senibina Komputer",
+     "semester_ambil":2,
+     "kredit":3,
+     "mod_elektif":null,
+     "tahun_ambil":1
+  },
+  {
+     "mod_elektif":null,
+     "tahun_ambil":1,
+     "kredit":2,
+     "nama_subjek":"Pemikiran Sains dan Teknologi",
+     "kod_subjek":"UICL2302",
+     "semester_ambil":2,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":1138
+  },
+  {
+     "kod_subjek":"ULAB1122",
+     "nama_subjek":"Academic English Skills",
+     "semester_ambil":2,
+     "id_kurikulum_subjek":926,
+     "nama_elektif":null,
+     "mod_elektif":null,
+     "tahun_ambil":1,
+     "kredit":2
+  },
+  {
+     "kredit":3,
+     "tahun_ambil":2,
+     "mod_elektif":null,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":927,
+     "semester_ambil":1,
+     "nama_subjek":"Pangkalan Data",
+     "kod_subjek":"SCSD2523"
+  },
+  {
+     "id_kurikulum_subjek":928,
+     "nama_elektif":null,
+     "semester_ambil":1,
+     "kod_subjek":"SCSD2613",
+     "nama_subjek":"Analisis dan Rekabentuk Sistem",
+     "kredit":3,
+     "tahun_ambil":2,
+     "mod_elektif":null
+  },
+  {
+     "mod_elektif":null,
+     "tahun_ambil":2,
+     "kredit":3,
+     "kod_subjek":"SCSJ2013",
+     "nama_subjek":"Struktur Data & Algoritma",
+     "semester_ambil":1,
+     "id_kurikulum_subjek":929,
+     "nama_elektif":null
+  },
+  {
+     "nama_elektif":null,
+     "id_kurikulum_subjek":1140,
+     "semester_ambil":1,
+     "nama_subjek":"Komunikasi Rangkaian",
+     "kod_subjek":"SCSR2213",
+     "kredit":3,
+     "tahun_ambil":2,
+     "mod_elektif":null
+  },
+  {
+     "mod_elektif":null,
+     "tahun_ambil":2,
+     "kredit":3,
+     "nama_subjek":"Interaksi Manusia Komputer",
+     "kod_subjek":"SCSV2113",
+     "semester_ambil":1,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":931
+  },
+  {
+     "tahun_ambil":2,
+     "mod_elektif":1,
+     "kredit":2,
+     "pilihan_elektif":"0",
+     "semester_ambil":1,
+     "kod_subjek":"UKQXxxx2",
+     "nama_subjek":"Ko-Kurikulum",
+     "id_kurikulum_subjek":932,
+     "nama_elektif":"Ko-Kurikulum"
+  },
+  {
+     "mod_elektif":null,
+     "tahun_ambil":2,
+     "kredit":4,
+     "kod_subjek":"SCSJ2154",
+     "nama_subjek":"Pengaturcaraan Berorientasikan Objek",
+     "semester_ambil":2,
+     "id_kurikulum_subjek":934,
+     "nama_elektif":null
+  },
+  {
+     "id_kurikulum_subjek":935,
+     "nama_elektif":null,
+     "kod_subjek":"SCSJ2203",
+     "nama_subjek":"Kejuruteraan Perisian",
+     "semester_ambil":2,
+     "kredit":3,
+     "mod_elektif":null,
+     "tahun_ambil":2
+  },
+  {
+     "kredit":3,
+     "pilihan_elektif":"2",
+     "mod_elektif":1,
+     "tahun_ambil":2,
+     "id_kurikulum_subjek":938,
+     "nama_elektif":"Elektif SCSJ2xx3",
+     "kod_subjek":"SCSJ2xx3",
+     "nama_subjek":"Elektif SCSJ2xx3",
+     "semester_ambil":2
+  },
+  {
+     "nama_subjek":"Sistem Pengoperasian",
+     "kod_subjek":"SCSR2043",
+     "semester_ambil":2,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":936,
+     "mod_elektif":null,
+     "tahun_ambil":2,
+     "kredit":3
+  },
+  {
+     "tahun_ambil":2,
+     "mod_elektif":null,
+     "kredit":3,
+     "semester_ambil":2,
+     "nama_subjek":"Pengaturcaraan Web",
+     "kod_subjek":"SCSV2223",
+     "nama_elektif":null,
+     "id_kurikulum_subjek":1141
+  },
+  {
+     "mod_elektif":null,
+     "tahun_ambil":2,
+     "kredit":2,
+     "kod_subjek":"ULAB2122",
+     "nama_subjek":"Advanced Academic English Skills",
+     "semester_ambil":2,
+     "id_kurikulum_subjek":937,
+     "nama_elektif":null
+  },
+  {
+     "mod_elektif":null,
+     "tahun_ambil":3,
+     "kredit":4,
+     "kod_subjek":"SCSJ3104",
+     "nama_subjek":"Pembangunan Aplikasi",
+     "semester_ambil":1,
+     "id_kurikulum_subjek":941,
+     "nama_elektif":null
+  },
+  {
+     "id_kurikulum_subjek":939,
+     "nama_elektif":null,
+     "kod_subjek":"SCSJ3203",
+     "nama_subjek":"Teori Sains Komputer",
+     "semester_ambil":1,
+     "kredit":3,
+     "mod_elektif":null,
+     "tahun_ambil":3
+  },
+  {
+     "kod_subjek":"SCSJ3xx3",
+     "nama_subjek":"Elective Courses - Choose 3 (9 Credits)",
+     "semester_ambil":1,
+     "id_kurikulum_subjek":942,
+     "nama_elektif":"Elective Courses - Choose 3 (9 Credits)",
+     "mod_elektif":1,
+     "tahun_ambil":3,
+     "kredit":9,
+     "pilihan_elektif":"4"
+  },
+  {
+     "kredit":2,
+     "tahun_ambil":3,
+     "mod_elektif":null,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":940,
+     "semester_ambil":1,
+     "nama_subjek":"English for Profesional Purposes",
+     "kod_subjek":"ULAB3162"
+  },
+  {
+     "kredit":1,
+     "mod_elektif":null,
+     "tahun_ambil":3,
+     "id_kurikulum_subjek":944,
+     "nama_elektif":null,
+     "kod_subjek":"SCSD3761",
+     "nama_subjek":"Technopreneurship Seminar",
+     "semester_ambil":2
+  },
+  {
+     "mod_elektif":null,
+     "tahun_ambil":3,
+     "kredit":2,
+     "nama_subjek":"Projek I Kejuruteraan Perisian",
+     "kod_subjek":"SCSJ3032",
+     "semester_ambil":2,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":943
+  },
+  {
+     "semester_ambil":2,
+     "nama_subjek":"Elective Courses - Choose 4 (12 Credits)",
+     "kod_subjek":"SCSX3xx3",
+     "nama_elektif":"Elective Courses - Choose 4 (12 Credits)",
+     "id_kurikulum_subjek":1143,
+     "tahun_ambil":3,
+     "mod_elektif":1,
+     "pilihan_elektif":"5",
+     "kredit":12
+  },
+  {
+     "nama_elektif":null,
+     "id_kurikulum_subjek":1142,
+     "nama_subjek":"Introduction to  Entrepreneurship",
+     "kod_subjek":"UHAK1032",
+     "semester_ambil":2,
+     "kredit":2,
+     "mod_elektif":null,
+     "tahun_ambil":3
+  },
+  {
+     "nama_subjek":"Latihan Praktik (Laporan)",
+     "kod_subjek":"SCSJ4114",
+     "semester_ambil":1,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":949,
+     "mod_elektif":null,
+     "tahun_ambil":4,
+     "kredit":4
+  },
+  {
+     "semester_ambil":1,
+     "nama_subjek":"Latihan Praktik (HW)",
+     "kod_subjek":"SCSJ4118",
+     "nama_elektif":null,
+     "id_kurikulum_subjek":925,
+     "tahun_ambil":4,
+     "mod_elektif":null,
+     "kredit":8
+  },
+  {
+     "kredit":4,
+     "mod_elektif":null,
+     "tahun_ambil":4,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":950,
+     "nama_subjek":"Projek II Kejuruteraan Perisian",
+     "kod_subjek":"SCSJ4134",
+     "semester_ambil":2
+  },
+  {
+     "pilihan_elektif":"3",
+     "kredit":6,
+     "tahun_ambil":4,
+     "mod_elektif":1,
+     "nama_elektif":"Elective Courses - Choose 2 (6 Credits)",
+     "id_kurikulum_subjek":952,
+     "semester_ambil":2,
+     "nama_subjek":"Elective Courses - Choose 2 (6 Credits)",
+     "kod_subjek":"SCSJ4xx3"
+  },
+  {
+     "kredit":2,
+     "pilihan_elektif":"0",
+     "tahun_ambil":4,
+     "mod_elektif":1,
+     "id_kurikulum_subjek":1147,
+     "nama_elektif":"Elektif Perluasan Ilmu",
+     "semester_ambil":2,
+     "kod_subjek":"UICL2xx2",
+     "nama_subjek":"Elektif Perluasan Ilmu"
+  },
+  {
+     "mod_elektif":1,
+     "tahun_ambil":4,
+     "pilihan_elektif":"0",
+     "kredit":2,
+     "nama_subjek":"Elective Foreign Language (Malaysian Students)",
+     "kod_subjek":"ULAX1112",
+     "semester_ambil":2,
+     "nama_elektif":"Elective Foreign Language (Malaysian Students)",
+     "id_kurikulum_subjek":951
+  }
+]

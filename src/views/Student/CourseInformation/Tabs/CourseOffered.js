@@ -15,6 +15,7 @@ class CourseOffered extends Component {
     };
   }
 
+  
 
   render() {
     return (

@@ -9,32 +9,21 @@ import {
   Card,
   CardBody,
   CardHeader,
-  CardFooter,
   Table,
   Col,
-  CardTitle,
-  FormGroup,
-  ListGroupItem,
   Row,
-  Button,
-  Collapse,
-  ListGroupItemText,
-  Input,
-  Dropdown,
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
   ButtonDropdown,
 } from "reactstrap";
-import data from "@iconify/icons-mdi/cog";
-import randomColor from "randomcolor";
 
 class TimeTable extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.changeValue = this.changeValue.bind(this);
-    console.log(props);
+    // console.log(props);
 
     this.state = {
       checked: 1,
@@ -68,20 +57,21 @@ class TimeTable extends Component {
 
   MouseHover = (e) => {
     // call Function Inside Mouse Hover  Event
-    let color = randomColor();
-    this.setState({
-      bgColor: color,
-    });
+    // // let color = randomColor();
+    // this.setState({
+    //   bgColor: color,
+    // });
   };
 
   async componentDidMount() {
     CourseActions.getCourse(this.props.dispatch);
     CourseActions.getTimeTable(this.props.dispatch);
+    CourseActions.getCuriculum(this.props.dispatch);
   }
 
   render() {
-    let { selectedTimeTable, session } = this.props.course;
-    console.log(selectedTimeTable);
+    let { selectedSession, selectedTimeTable, session } = this.props.course;
+    // console.log(selectedSession);
     let time = [
       "7:00am - 7:59am",
       "8:00am - 8:59am",
@@ -97,79 +87,82 @@ class TimeTable extends Component {
       "06:00pm - 06:59pm",
     ];
     // let time = [1,2,3,4,5,6,7,8,9,10]
-    let hari = [1, 2, 3, 4, 5, 6, 7];
+    let day = [1, 2, 3, 4, 5, 6, 7];
 
     return (
       <>
         <Card className="shadow animated fadeIn rounded">
-        <CardHeader className="bg-dark border-bottom-0">
-        <Row>
-            <Col sm="6">
-              <h2 style={{ textAlign: "left" }}>Time Table Information</h2>
-            </Col>
-            <Col sm="6">
-            <div className="d-flex justify-content-end" >
-              {/* <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}> */}
-              <ButtonDropdown
-                isOpen={this.state.dropdownOpen}
-                toggle={this.toggle}
-              >
-                <DropdownToggle caret className="font-xl font-weight-bold">
-                  {/* {this.state.dropDownValue} */}
-                  {this.state.dropDownValue === ""
-                    ? session[0]
-                    : this.state.dropDownValue}
-                </DropdownToggle>
-                <DropdownMenu end>
-                  {session.map((e) => {
-                    return (
-                      <DropdownItem id={e} key={e} onClick={this.changeValue}>
-                        {e}
-                      </DropdownItem>
-                    );
-                  })}
-                </DropdownMenu>
-              </ButtonDropdown>
-            </div>
-            </Col>
+          <CardHeader className="bg-dark border-bottom-0">
+            <Row>
+              <Col sm="6">
+                <h2 style={{ textAlign: "left" }}>Time Table Information</h2>
+              </Col>
+              <Col sm="6">
+                <div className="d-flex justify-content-end">
+                  {/* <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}> */}
+                  <ButtonDropdown
+                    isOpen={this.state.dropdownOpen}
+                    toggle={this.toggle}
+                  >
+                    <DropdownToggle caret className="font-xl font-weight-bold">
+                      {/* {this.state.dropDownValue} */}
+                      {this.state.dropDownValue === ""
+                        ? session[0]
+                        : this.state.dropDownValue}
+                    </DropdownToggle>
+                    <DropdownMenu end>
+                      {session.map((e) => {
+                        return (
+                          <DropdownItem
+                            id={e}
+                            key={e}
+                            onClick={this.changeValue}
+                          >
+                            {e}
+                          </DropdownItem>
+                        );
+                      })}
+                    </DropdownMenu>
+                  </ButtonDropdown>
+                </div>
+              </Col>
             </Row>
           </CardHeader>
           <CardBody>
-          <Table borderless size="sm">
-
-
+            <Table borderless size="sm">
               <tbody className="mb-5">
                 <tr width="10px">
                   <th scope="row">Semester</th>
                   <td>:</td>
-                  <td>3</td>
+                  <td>{this.state.dropDownValue === ""
+                        ? session[0]
+                        : this.state.dropDownValue}</td>
                 </tr>
                 <tr>
                   <th className="col-2">Session</th>
                   <td style={{ width: "10px" }}>:</td>
-                  <td>2020/2021</td>
+                  <td>{this.state.dropDownValue === ""
+                        ? session[0]
+                        : this.state.dropDownValue}</td>
                 </tr>
                 <tr width="10px">
                   <th scope="row">Total subjects taken</th>
                   <td>:</td>
-                  <td>4</td>
+                  <td>{selectedSession.length}</td>
                 </tr>
                 <tr width="10px">
                   <th scope="row">Total class hours</th>
                   <td>:</td>
-                  <td>4 Hours</td>
+                  <td>{selectedTimeTable.length} Hours</td>
                 </tr>
-
               </tbody>
             </Table>
           </CardBody>
         </Card>
         <Card className="shadow animated fadeIn rounded">
           <CardBody>
-
-
             {/* {dataTimeTable} */}
-            <Table bordered size="sm" center>
+            <Table bordered size="sm">
               <thead>
                 <tr
                   className="text-center bg-gray-200 shadow"
@@ -189,91 +182,118 @@ class TimeTable extends Component {
               <tbody className="mb-5 text-center">
                 {selectedTimeTable.length === 0 ? (
                   <tr>
-                    <td align="center" colspan="8">
+                    <td align="center" colSpan="8">
                       No Data
                     </td>
                   </tr>
-                ) : (
-                  time.map((masa, indexMasa) => {
+                ) : 
+                
+                (
+                  time.map((time, indexTime) => {
                     return (
-                      <tr width="10px">
+                      <tr width="10px" key={indexTime}>
                         <td className="" style={{ width: "150px" }}>
-                          {masa}
+                          {time}
                         </td>
-                        {indexMasa === 6 ? (
-                          <td className="bg-dark" colspan="7">
+                        {indexTime === 6 ? (
+                          <td className="bg-dark" colSpan="7">
                             REHAT
                           </td>
                         ) : (
-                          hari.map((hari, indexHari) => (
-                            <td>
-                              {selectedTimeTable.map((data, index) => {
-                                if (
-                                  data.masa === indexMasa + 1 &&
-                                  data.hari === hari
-                                ) {
-                                  return (
-                                    <>
-                                      <div
-                                        // onClick={this.clickHandler}
-                                        className="shadow"
-                                        style={{
-                                          backgroundColor: data.color,
-                                        }}
-                                        // onMouseMove={this.MouseHover}
-                                      >
-                                        {data.course.kod_subjek}{this.state.bgColor}
-                                        <div>{data.course.nama_subjek}</div>
-                                      </div>
-
-                                    </>
-                                  );
+                          day.map((day, indexDay) => {
+                            return (
+                              <td key={indexDay}>
+                                {selectedTimeTable.map((data, index) => {
+                                  
+                                  if (
+                                    data.masa === indexTime + 1 &&
+                                    data.hari === day
+                                  ) {
+                                    return (
+                                      // <>
+                                        <div
+                                          key={index}
+                                          className="shadow"
+                                          style={{
+                                            backgroundColor: data.color,
+                                          }}
+                                        >
+                                          {data.course.kod_subjek} (
+                                          {data.seksyen})
+                                          <div>{data.course.nama_subjek}</div>
+                                          {data.course.lecturer.map((data, index) => (
+                                            <div
+                                              key={index}
+                                              className="small text-muted"
+                                            >
+                                              {data.nama}
+                                            </div>
+                                          ))}
+                                        </div>
+                                      // </>
+                                    );
+                                  }
+                                  else{
+                                    return('')
+                                  }
+                                })
                                 }
-                              })}
-                            </td>
-                          ))
+                              </td>
+                            );
+                          })
                         )}
                       </tr>
                     );
                   })
-                )}
-
-                {/* <tr width="10px">
-                  <td style={{height: '50px'}}> 1</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td className="text-center">Sains Kemanusian</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                </tr>
-                <tr width="10px">
-                <td style={{height: '50px'}}> 2</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                </tr>
-                <tr width="10px">
-                <td> 3</td>
-                <th colSpan={7} className="text-center bg-dark"> LUNCH </th>
-                </tr>
-                <tr width="10px">
-                <td style={{height: '50px'}}> 4</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                </tr> */}
+                )
+                }
               </tbody>
             </Table>
+          </CardBody>
+        </Card>
+
+        <Card>
+          <CardBody>
+
+          <Table bordered size="sm">
+              <thead>
+                <tr
+                  className="text-center bg-gray-200 shadow"
+                  style={{ height: "50px" }}
+                >
+                  <th>No</th>
+                  <th>Subject Code</th>
+                  <th>Section</th>
+                  <th>Subject Name</th>
+                  
+                  <th>Lecturer Name</th>
+                
+                </tr>
+              </thead>
+
+              <tbody className="mb-5 text-center">
+                {selectedSession.length === 0 ? (
+                  <tr>
+                    <td align="center" colSpan="4">
+                      No Data
+                    </td>
+                  </tr>
+                ) : 
+                (
+                  selectedSession.map((data,index) => 
+                    <CoursesRow
+                      key={index}
+                      data = {data}
+                      index = {index}
+                    >
+
+                    </CoursesRow>
+                  )
+                  
+                )}
+                </tbody>
+                </Table>
+
           </CardBody>
         </Card>
       </>
@@ -281,10 +301,40 @@ class TimeTable extends Component {
   }
 }
 
-class TimeTableRow extends Component {
+class CoursesRow extends Component {
+  
   render() {
+    let data = this.props.data
+    let numbers = this.props.index
+    let number = numbers + 1 
+    // console.log(data)
     let row = 10;
-    return <div></div>;
+    return (
+      <tr>
+      <td align="center">
+        {number}
+      </td>
+      <td align="center">
+        {data.kod_subjek}
+      </td>
+      <td align="center">
+      {data.seksyen}
+      </td>
+      <td align="left">
+      {data.nama_subjek}
+      </td>
+      
+      <td align="left">
+      {data.lecturer.map((data,index) => {
+        return(
+          <div key={index}>
+            <div>{data.nama}</div>
+          </div>
+        )
+      })}
+      </td>
+    </tr>  
+    )
   }
 }
 

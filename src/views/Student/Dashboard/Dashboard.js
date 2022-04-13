@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Auth } from '../../../api'
-import {  CourseActions } from '../../../__actions'
-import { connect } from 'react-redux';
+import { Auth } from "../../../api";
+import { CourseActions } from "../../../__actions";
+import { connect } from "react-redux";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en.json";
 
 import {
   Card,
@@ -17,34 +19,45 @@ import {
   Collapse,
   ListGroupItemText,
   Input,
+  Badge,
 } from "reactstrap";
 
-class Dashboard extends Component {
+TimeAgo.addDefaultLocale(en);
 
+class Dashboard extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props)
+    console.log(props);
 
     this.state = {
+      timeAgo: new TimeAgo("en-US"),
     };
   }
 
   async componentDidMount() {
-    CourseActions.getCourse(this.props.dispatch)
+    CourseActions.getCourse(this.props.dispatch);
   }
 
   render() {
-    const user = Auth.getAuthUser()
-    console.log(this.props.dashboard)
-    let {data} = this.props.dashboard
-    console.log({data})
+    const user = Auth.getAuthUser();
+    console.log(this.props.dashboard);
+    let { data } = this.props.dashboard;
+    console.log({ data });
     return (
       <>
-      <h2>Dashboard</h2>
+        {/* <h2>Dashboard</h2> */}
         <Card className="shadow animated fadeIn rounded">
           <CardHeader className="bg-dark border-bottom-0">
-            <h2>{user.name.toLowerCase().replace(/\b(\w)/g, s => s.toUpperCase())}</h2>
+            <h2>
+              Welcome,{" "}
+              {user.name
+                .toLowerCase()
+                .replace(/\b(\w)/g, (s) => s.toUpperCase())}{" "}
+              <Badge className="p-2" color="green" pill>
+                {user.description}
+              </Badge>
+            </h2>
           </CardHeader>
           <CardBody>
             <h3>Important Message</h3>
@@ -58,10 +71,27 @@ class Dashboard extends Component {
             {data.map}
           </CardFooter>
         </Card>
+
+        <Card>
+          <CardBody>
+            <div className="text-center h1">
+              Course Registration 2022/2023 Semester 1 will open on
+            </div>
+            <div className="text-center h3">25 October 2021</div>
+            <div className="text-center h3">12:00 am</div>
+            <div className="text-center">
+              Countdown:{" "}
+              {this.state.timeAgo.format(
+                new Date("2022-04-12 16:49:00").getTime()
+              )}
+            </div>
+          </CardBody>
+        </Card>
       </>
     );
   }
 }
 
-
-export default connect(state => { return state })(Dashboard) ;
+export default connect((state) => {
+  return state;
+})(Dashboard);

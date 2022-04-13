@@ -38,9 +38,11 @@ class CourseInformation extends Component {
 
   async componentDidMount() {
     CourseActions.getCourse(this.props.dispatch)
+    CourseActions.getCuriculum(this.props.dispatch)
   }
   render() {
-    let {data} = this.props.course
+    let {data,curriculumList} = this.props.course
+    console.log(curriculumList)
     return (
       <>
         <div>

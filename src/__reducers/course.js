@@ -1,5 +1,4 @@
 import { CONSTANTS } from "../api";
-import randomColor from "randomcolor";
 
 let initState = {
   data: [],
@@ -8,7 +7,10 @@ let initState = {
   message: "",
   notification: [],
   dataTimeTable: [],
+  dataCourses: [],
   selectedTimeTable: [],
+  selectedSession: [],
+  curriculumList: [],
   listErrSystem: [],
   errorSystem: {
     id: 0,
@@ -120,18 +122,28 @@ export function course(state = initState, action) {
       // console.log('dah masuk reducer dahboard')
       __state = { ...state };
       let color = '';
-      // console.log(action.semester)
-      // console.log(action.result)
+      // console.log(action.semester) // current semester
+      // console.log(action.result) // all course
+      // console.log(action.courseList)
 
+      let courses = [];
+      action.courseList.map((data, index) => {
+        _currentSession = action.semester.semester +" "+ action.semester.sesi;
+        // console.log((data.course.semester+" "+data.course.sesi), _currentSession)
+        if ((data.semester+" "+data.sesi) === (_currentSession)) {
 
-
+          courses.push(data);
+        } else {
+        }
+      });
+      // console.log(courses)
 
 
       let _session = [];
       let _currentSession = "";
       action.result.map((data, index) => {
         _currentSession = action.semester.semester +" "+ action.semester.sesi;
-        // console.log(data["sesi"])
+        // console.log((data.course.semester+" "+data.course.sesi), _currentSession)
         if ((data.course.semester+" "+data.course.sesi) === (_currentSession)) {
 
           if(index>0 && (data.course.kod_subjek === action.result[index-1].course.kod_subjek)){
@@ -149,17 +161,31 @@ export function course(state = initState, action) {
           // console.log({name: currentSession})
         }
       });
-      console.log(_session);
+      // console.log(_session);
 
       __state.dataTimeTable = action.result;
-      __state.selectedTimeTable = _session;
+      __state.dataCourses = action.courseList;
+      __state.selectedTimeTable = _session; 
+      __state.selectedSession = courses; 
       return __state;
 
       case CONSTANTS.COURSE.GET_SELECTED_TIMETABLE_LIST:
         // console.log('dah masuk reducer dahboard')
         __state = { ...state };
-        console.log(action.result)
+        // console.log(__state.dataCourses)
         // let _color = ''
+
+        let __courses = [];
+        __state.dataCourses.map((data, index) => {
+          __currentSession = action.result;
+          // console.log((data.semester+" "+data.sesi), __currentSession)
+          if ((data.semester+" "+data.sesi) === (__currentSession)) {
+  
+            __courses.push(data);
+          } else {
+          }
+        });
+        // console.log(__courses)
 
         let __session = [];
         let __currentSession = "";
@@ -184,10 +210,17 @@ export function course(state = initState, action) {
             // console.log({name: currentSession})
           }
         });
-        console.log(__session);
+        // console.log(__session);
         __state.selectedTimeTable = __session;
-
+        __state.selectedSession = __courses; 
         return __state;
+
+        case CONSTANTS.COURSE.GET_CURRICULUM_LIST:
+          console.log("dah masuk reducer dahboard");
+          __state = { ...state };
+          __state.curriculumList = action.result;
+    
+          return __state;
 
     case CONSTANTS.CLEAR:
       return initState;
