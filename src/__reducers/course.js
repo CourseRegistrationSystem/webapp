@@ -96,7 +96,7 @@ export function course(state = initState, action) {
       return __state;
 
     case CONSTANTS.COURSE.GET_COURSE_LIST:
-      // console.log('dah masuk reducer dahboard')
+
       __state = { ...state };
       __state.data = action.result;
 
@@ -113,7 +113,7 @@ export function course(state = initState, action) {
           // console.log({name: currentSession})
         }
       });
-      // console.log(session);
+      console.log(__state);
       __state.session = session
       return __state;
 
@@ -218,8 +218,16 @@ export function course(state = initState, action) {
         case CONSTANTS.COURSE.GET_CURRICULUM_LIST:
           console.log("dah masuk reducer dahboard");
           __state = { ...state };
+          console.log(__state)
           __state.curriculumList = action.result;
-    
+          __state.data.map((data, index) => {
+
+            let back = data.substr(data.length - 4)
+            console.log(back)
+            console.log(action.result.includes(back))
+          })
+          
+          console.log(__state.data);
           return __state;
 
     case CONSTANTS.CLEAR:

@@ -42,7 +42,7 @@ class CourseInformation extends Component {
   }
   render() {
     let {data,curriculumList} = this.props.course
-    console.log(curriculumList)
+    // console.log(data)
     return (
       <>
         <div>
@@ -82,7 +82,7 @@ class CourseInformation extends Component {
           </Nav>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="1">
-              <CourseOffered>
+              <CourseOffered data={data} curriculumList={curriculumList}>
 
               </CourseOffered>
 
