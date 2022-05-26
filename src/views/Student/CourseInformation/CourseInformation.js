@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import {  CourseActions } from '../../../__actions'
+import { connect } from 'react-redux';
 import CourseOffered from './Tabs/CourseOffered'
 import RemainingCourse from './Tabs/RemainingCourse'
 import TransferCredit from './Tabs/TransferCredit'
-import { connect } from 'react-redux';
+
 import {
   Card,
   Col,

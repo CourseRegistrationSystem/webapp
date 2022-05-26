@@ -1,0 +1,542 @@
+[
+  {
+     "kredit":3,
+     "tahun_ambil":1,
+     "mod_elektif":null,
+     "nama_elektif":null,
+     "id_kurikulum_subjek":917,
+     "semester_ambil":1,
+     "nama_subjek":"Discrete Structure ",
+     "kod_subjek":"SECI1013"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Programming Technique I",
+    "kod_subjek":"SECJ1013"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Digital Logic",
+    "kod_subjek":"SECR1013 "
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Digital Logic",
+    "kod_subjek":"SECR1013 "
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Technology & Information System",
+    "kod_subjek":"SECP1513"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Computational Mathematics",
+    "kod_subjek":"SECI1113"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Probability & Statistical Data Analysis",
+    "kod_subjek":"SECl1143"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Programming Technique II",
+    "kod_subjek":"SECJ1023"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Computer Organisation and Architecture",
+    "kod_subjek":"SECR1033"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Database",
+    "kod_subjek":"SECD2523"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Database",
+    "kod_subjek":"SECD2523"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"System Analysis and Design",
+    "kod_subjek":"SECD2613"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Data Structure and Algorithm",
+    "kod_subjek":"SECJ2013"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Network Communications",
+    "kod_subjek":"SECR2213"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Human Computer Interaction",
+    "kod_subjek":"SECV2113"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Software Engineering",
+    "kod_subjek":"SECJ2203"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Web Programming",
+    "kod_subjek":"SECV2223"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Operating Systems",
+    "kod_subjek":"SECR2043"
+  },
+  {
+    "kredit":4,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Object Oriented Programming",
+    "kod_subjek":"SECJ2154"
+  },
+  {
+    "kredit":2,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Software Engineering Project I ",
+    "kod_subjek":"SECJ3032"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Theory of Computer Science",
+    "kod_subjek":"SECJ3203"
+  },
+  {
+    "kredit":8,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Industrial Training ",
+    "kod_subjek":"SECJ4118"
+  },
+  {
+    "kredit":4,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Industrial Training Report",
+    "kod_subjek":"SECJ4114"
+  },
+  {
+    "kredit":4,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Software Engineering Project II ",
+    "kod_subjek":"SECJ4134"
+  },
+  {
+    "kredit":1,
+    "tahun_ambil":1,
+    "mod_elektif":null,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Technopreneurship Seminar",
+    "kod_subjek":"SECD3761"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Requirements Engineering & Software Modelling",
+    "kod_subjek":"SECJ2253"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Software Project Management",
+    "kod_subjek":"SECJ2363"
+  },
+  {
+    "kredit":4,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Applications Development",
+    "kod_subjek":"SECJ3104"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Artificial Intelligence",
+    "kod_subjek":"SECJ3553"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Internet Programming",
+    "kod_subjek":"SECJ3303"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Software Design & Architecture",
+    "kod_subjek":"SECJ3323"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Knowledge-Based & Expert Systems",
+    "kod_subjek":"SECJ3603"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Software Quality Assurance",
+    "kod_subjek":"SECJ3343"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Computational Intelligence",
+    "kod_subjek":"SECJ3563"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Mobile Application Programming ",
+    "kod_subjek":"SECJ3623"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Special Topic in Software Engineering",
+    "kod_subjek":"SECJ3403"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Web Technology",
+    "kod_subjek":"SECJ3483"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Software Construction",
+    "kod_subjek":"SECJ4383"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Real-Time Software Engineering",
+    "kod_subjek":"SECJ4423"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Agent-Oriented Software Engineering",
+    "kod_subjek":"SECJ4463"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Falsafah dan Isu Semasa",
+    "kod_subjek":"UHIS1022"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Penghayatan Etika dan Peradaban",
+    "kod_subjek":"UHMS1182"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Malaysia Language for Communication (for International Students only)",
+    "kod_subjek":"UHLM1012"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Graduate Success Attributes",
+    "kod_subjek":"UHMT1012"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"The Thought of Science and Technology",
+    "kod_subjek":"UHIT2302"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Malaysia Dynamic (for Malaysian Students only)",
+    "kod_subjek":"UHMS1172"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Malaysian Studies 3",
+    "kod_subjek":"UHMS1022"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Service Learning Co-curriculum Elective",
+    "kod_subjek":"UKQF2xx2"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Extracurricular Experiential Learning",
+    "kod_subjek":"UKQT3001"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"English Communication Skills",
+    "kod_subjek":"UHLB1122"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Academic Communication Skills",
+    "kod_subjek":"UHLB2122"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Professional Communication Skills",
+    "kod_subjek":"UHLB3132"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Foreign Language Elective",
+    "kod_subjek":"UHLx1112"
+  },
+  {
+    "kredit":3,
+    "tahun_ambil":1,
+    "mod_elektif":1,
+    "nama_elektif":null,
+    "id_kurikulum_subjek":917,
+    "semester_ambil":1,
+    "nama_subjek":"Introduction to Entrepreneurship",
+    "kod_subjek":"UBSS1032"
+  }
+]

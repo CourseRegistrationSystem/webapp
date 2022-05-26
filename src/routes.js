@@ -21,14 +21,22 @@ const GroupSectionInformation = React.lazy(() => import('./views/Student/GroupSe
 const RegisterNewCourse = React.lazy(() => import('./views/Student/RegisterNewCourse/RegisterNewCourse'))
 const TimeTableStudent = React.lazy(() => import('./views/Student/TimeTable/TimeTable'))
 
+//Admin
+const DashboardAdmin = React.lazy(() => import('./views/Staff/Dashboard/Dashboard'))
+const adminAssignLecturer = React.lazy(() => import('./views/Staff/CourseRegistration/AssignLecturerCourse/AssignLecturerCourse'))
+const adminAssignSection = React.lazy(() => import('./views/Staff/CourseRegistration/AssignSectionCourse/AssignSectionCourse'))
+const adminCreateSection = React.lazy(() => import('./views/Staff/ManageCourse/CreateSection/CreateSection'))
+const adminRegistrationSession = React.lazy(() => import('./views/Staff/ManageCourse/RegistrationScheduleSession/RegistrationScheduleSession'))
+const adminTimeTable = React.lazy(() => import('./views/Staff/ManageCourse/TimeTable/TimeTable'))
+
 const routesAdmin = [
-  // { path: '/', exact: true, name: 'Home' },
-  // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
-  // { path: '/vehicleDetails', exact: true, name: 'Vehicle Details', component: vehicleDetails },
-  // { path: '/carDetails/newCar', exact: true, name: 'Add New MyAV', component: NewCar },
-  // { path: '/carDetails/oneCar', exact: true, name: 'Car Analysys History', component: OneCar },
-  // { path: '/analysis', exact: true, name: 'Analysis', component: Analysis },
-  // { path: '/profile', exact: true, name: 'Profile', component: Profile },
+  { path: '/', exact: true, name: 'Home' },
+  { path: '/DashboardAdmin', name: 'Dashboard', component: DashboardAdmin },
+  { path: '/adminAssignLecturer', exact: true, name: 'adminAssignLecturer', component: adminAssignLecturer },
+  { path: '/adminAssignSection', exact: true, name: 'adminAssignSection', component: adminAssignSection },
+  { path: '/adminCreateSection', exact: true, name: 'adminCreateSection', component: adminCreateSection },
+  { path: '/adminRegistrationSession', exact: true, name: 'adminRegistrationSession', component: adminRegistrationSession },
+  { path: '/adminTimeTable', exact: true, name: 'adminTimeTable', component: adminTimeTable },
   // { path: '/users', exact: true, name: 'Users', component: Users },
   // { path: '/dashboardLecturer', exact: true, name: 'Dashboard', component: DashboardLecturer },
 ];
@@ -68,9 +76,9 @@ const routesBasic = [];
 
 export default {
   Basic: routesBasic,
-  Admin: routesAdmin,
   Manager: routesManager,
 
+  Admin: routesAdmin,
   Student: routesStudent,
   Lecturer: routesLecturer,
 };

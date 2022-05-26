@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { CourseActions } from "../../../__actions";
+import Select from 'react-select';
+import RegistrationTable from "./RegistrationTable";
 
 import {
   Card,
@@ -8,6 +12,8 @@ import {
   Table,
   Col,
   CardTitle,
+  Form,
+  Label,
   FormGroup,
   ListGroupItem,
   Row,
@@ -17,8 +23,35 @@ import {
   Input,
 } from "reactstrap";
 
+
+
 class RegisterNewCourse extends Component {
+  constructor(props) {
+    super(props);
+
+    // console.log(props);
+    // this.checkSectionAvailability = this.checkSectionAvailability.bind(this);
+    // this.onInputChange = this.onInputChange.bind(this);
+
+    this.state = {
+      code: '',
+      courseName: '',
+    }
+  }
+
+  componentDidMount(){
+    CourseActions.getCourseRegistrationList(this.props.dispatch)
+  }
+
   render() {
+
+    let {checkCourseList} = this.props.course
+    let option = []
+    var data = checkCourseList.map(data=>{
+      option.push({value: data, nama_subjek: data.nama_subjek, label: (data.kod_subjek +" - "+ data.nama_subjek)})
+    });
+
+    
     return (
       <>
         <Card className="shadow animated fadeIn rounded">
@@ -74,68 +107,18 @@ class RegisterNewCourse extends Component {
           </CardFooter>
         </Card>
 
-      <Card className="shadow animated fadeIn rounded">
-        {/* <CardBody> */}
-            <Table bordered size="sm" center >
-              <thead>
-                <tr>
-                  <th ></th>
-                  <th >Sunday</th>
-                  <th >Monday</th>
-                  <th >Tuesday</th>
-                  <th >Wednesday</th>
-                  <th >Thursday</th>
-                  <th >Friday</th>
-                  <th >Saturday</th>
-                </tr>
-              </thead>
+      <RegistrationTable checkCourseList = {checkCourseList}></RegistrationTable>
 
-              <tbody className="mb-5">
-                <tr width="10px">
-                  <td style={{height: '50px'}}> 1</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td className="text-center">Sains Kemanusian</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                </tr>
-                <tr width="10px">
-                <td style={{height: '50px'}}> 2</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                </tr>
-                <tr width="10px">
-                <td> 3</td>
-                <th colSpan={7} className="text-center bg-dark"> LUNCH </th>
-                </tr>
-                <tr width="10px">
-                <td style={{height: '50px'}}> 4</td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                  <td ></td>
-                </tr>
-
-              </tbody>
-            </Table>
-          {/* </CardBody> */}
-          <CardFooter>
-            <div>This is footer</div>
-          </CardFooter>
-        </Card>
+      
       </>
     );
   }
 }
 
-export default RegisterNewCourse;
+
+
+
+
+export default connect((state) => {
+  return state;
+})(RegisterNewCourse);

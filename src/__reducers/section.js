@@ -1,41 +1,41 @@
 import { CONSTANTS } from '../api';
 let initState = {
-    data: [], graph: null, message: '', notification: [],
+    dataSection: [], graph: null, message: '', notification: [],
     listErrSystem: [],
     errorSystem: { id: 0, show: false, types: '', value: '', resolve: false, datetime: '' }
 }
 
-export function dashboard(state = initState, action) {
+export function section(state = initState, action) {
     //console.log(action)
     let _data = []
     let __state = { ...state }
     switch (action.type) {
-        case CONSTANTS.DASHBOARD.SUCCESS:
+        case CONSTANTS.SECTION.SUCCESS:
             return {
-                data: action.result,
+                dataSection: action.result,
                 graph: [...state.graph]
             };
-        case CONSTANTS.DASHBOARD.FAILURE:
+        case CONSTANTS.SECTION.FAILURE:
             return {
                 message: action.message,
-                data: [...state.data],
+                dataSection: [...state.dataSection],
                 graph: [...state.graph]
             };
-        case CONSTANTS.DASHBOARD.GRAPH_SUCCESS:
+        case CONSTANTS.SECTION.GRAPH_SUCCESS:
             return {
                 ...state,
                 graph: action.result
             };
-        case CONSTANTS.DASHBOARD.GRAPH_FAILURE:
+        case CONSTANTS.SECTION.GRAPH_FAILURE:
             return {
                 message: action.message,
                 graph: [...state.graph]
             };
-        case CONSTANTS.DASHBOARD.NOTIFICATION:
-            return { ...state, notification: action.data };
-        case CONSTANTS.DASHBOARD.ERRORSYSTEM:
-            // console.log(action.data)
-            __state.listErrSystem.push(action.data)
+        case CONSTANTS.SECTION.NOTIFICATION:
+            return { ...state, notification: action.dataSection };
+        case CONSTANTS.SECTION.ERRORSYSTEM:
+            // console.log(action.dataSection)
+            __state.listErrSystem.push(action.dataSection)
             __state.errorSystem = {
                 id: __state.listErrSystem[0].id,
                 show: true,
@@ -46,7 +46,7 @@ export function dashboard(state = initState, action) {
             }
 
             return __state
-        case CONSTANTS.DASHBOARD.ERRORSYSTEM_RESET:
+        case CONSTANTS.SECTION.ERRORSYSTEM_RESET:
             __state.listErrSystem.shift()
             if (__state.listErrSystem.length === 0) {
                 __state.errorSystem = initState.errorSystem
@@ -62,16 +62,16 @@ export function dashboard(state = initState, action) {
             }
             return __state
 
-        case CONSTANTS.DASHBOARD.LATEST_DATA_SUCCESS:
+        case CONSTANTS.SECTION.LIST_SECTION:
                 __state = {...state}
-                __state.data = action.result
+                __state.dataSection = action.result
 
             return __state
 
-            case CONSTANTS.DASHBOARD.GET_COURSE_LIST:
+            case CONSTANTS.SECTION.GET_COURSE_LIST:
                 // console.log('dah masuk reducer dahboard')
                 __state = {...state}
-                __state.data = action.result
+                __state.dataSection = action.result
 
             return __state
 

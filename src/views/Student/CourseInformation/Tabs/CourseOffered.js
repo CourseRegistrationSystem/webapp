@@ -15,7 +15,7 @@ class CourseOffered extends Component {
     };
   }
 
-  
+
 
   render() {
     return (
@@ -26,7 +26,7 @@ class CourseOffered extends Component {
                 </Col>
               </Row>
               <Card>
-                <Table hover responsive size="md">
+                {/* <Table hover responsive size="md">
                   <thead>
                     <tr>
                       <th></th>
@@ -67,7 +67,7 @@ class CourseOffered extends Component {
                       </td>
                     </tr>
                   </tbody>
-                </Table>
+                </Table> */}
 
                 <Table hover responsive size="md">
 
@@ -132,7 +132,7 @@ class TakenCourseRow extends Component {
                 <td>{data.semester_ambil} - {data.tahun_ambil}</td>
                 <td>
                   <Badge className="p-2" color="green" pill>
-                    
+
                     {data.mod_elektif === 1?('Elective Subject'):('')}
 
                   </Badge>

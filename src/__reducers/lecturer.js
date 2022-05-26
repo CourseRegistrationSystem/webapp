@@ -5,35 +5,35 @@ let initState = {
     errorSystem: { id: 0, show: false, types: '', value: '', resolve: false, datetime: '' }
 }
 
-export function dashboard(state = initState, action) {
+export function lecturer(state = initState, action) {
     //console.log(action)
     let _data = []
     let __state = { ...state }
     switch (action.type) {
-        case CONSTANTS.DASHBOARD.SUCCESS:
+        case CONSTANTS.LECTURER.SUCCESS:
             return {
                 data: action.result,
                 graph: [...state.graph]
             };
-        case CONSTANTS.DASHBOARD.FAILURE:
+        case CONSTANTS.LECTURER.FAILURE:
             return {
                 message: action.message,
                 data: [...state.data],
                 graph: [...state.graph]
             };
-        case CONSTANTS.DASHBOARD.GRAPH_SUCCESS:
+        case CONSTANTS.LECTURER.GRAPH_SUCCESS:
             return {
                 ...state,
                 graph: action.result
             };
-        case CONSTANTS.DASHBOARD.GRAPH_FAILURE:
+        case CONSTANTS.LECTURER.GRAPH_FAILURE:
             return {
                 message: action.message,
                 graph: [...state.graph]
             };
-        case CONSTANTS.DASHBOARD.NOTIFICATION:
+        case CONSTANTS.LECTURER.NOTIFICATION:
             return { ...state, notification: action.data };
-        case CONSTANTS.DASHBOARD.ERRORSYSTEM:
+        case CONSTANTS.LECTURER.ERRORSYSTEM:
             // console.log(action.data)
             __state.listErrSystem.push(action.data)
             __state.errorSystem = {
@@ -46,7 +46,7 @@ export function dashboard(state = initState, action) {
             }
 
             return __state
-        case CONSTANTS.DASHBOARD.ERRORSYSTEM_RESET:
+        case CONSTANTS.LECTURER.ERRORSYSTEM_RESET:
             __state.listErrSystem.shift()
             if (__state.listErrSystem.length === 0) {
                 __state.errorSystem = initState.errorSystem
@@ -62,13 +62,13 @@ export function dashboard(state = initState, action) {
             }
             return __state
 
-        case CONSTANTS.DASHBOARD.LATEST_DATA_SUCCESS:
+        case CONSTANTS.LECTURER.LIST_LECTURER:
                 __state = {...state}
                 __state.data = action.result
 
             return __state
 
-            case CONSTANTS.DASHBOARD.GET_COURSE_LIST:
+            case CONSTANTS.LECTURER.GET_COURSE_LIST:
                 // console.log('dah masuk reducer dahboard')
                 __state = {...state}
                 __state.data = action.result

@@ -18,40 +18,61 @@ class Auth {
     //     return this.login({ email: email, password: password })
     // }
     static async login(credentials) {
+      console.log(credentials)
 
-    var requestOptions = {
-      method : 'GET'
+      try {
+
+
+        let result = await IRequest.Post(SERVER.API.Login, credentials)
+        console.log(result)
+        let AuthData = {
+            token: (result.token) ? result.token : (result.id) ? result.id : '',
+            name: (result.name) ? result.name : '',
+            // username: (result.username) ? result.username : '',
+            // picture: (result.picture) ? result.picture : '',
+            // uid: (result.uid) ? result.uid : '',
+            role: (result.role) ? result.role : '',
+            // contact: (result.contact) ? result.contact : '',
+            // created: (result.createdDate) ? Dates.format(result.createdDate, Dates.FORMAT.DATE_TIME1) : ''
+        }
+
+
+        this.saveAuthUser(AuthData)
+        return Promise.resolve(AuthData)
+    } catch (error) {
+      // try{
+
+        var requestOptions = {
+          method : 'GET'
+        }
+                       fetch("http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=authentication&login="+credentials.username+"&password="+credentials.password, requestOptions)
+                      .then(response => response.json())
+                      .then(result => {
+                        console.log(result.length)
+                        console.log(result[0],credentials.password);
+                        let role = ''
+                        if (credentials.username.length === 9 && credentials.password.length === 12) {role = 'Student'} // A 18 CS 30 26 (9)  20 19 01 M1 02 99 (12)
+                        else if (credentials.username.length === 5 && credentials.password.length === 7) {role = 'Lecturer'} // 12 08 5 (5) S808323 (7)
+                        else if (credentials.username.length === 6 && credentials.password.length === 8) {role = 'Admin'} //  ad 20 21 (6) sc sx 31 04 (8)
+
+                        let AuthData = {
+                        token: (result[0].session_id) ? result[0].session_id : (result[0].session_id) ? result[0].session_id : '',
+                        name: (result[0].full_name) ? result[0].full_name : '',
+                        role: role,
+                        description: (result[0].description) ? result[0].description : '',
+                        matricNo: (result[0].login_name) ? result[0].login_name : '',
+                        }
+                    this.saveAuthUser(AuthData)
+                      }).catch(error => console.log('error', error));
+      // }catch{}
+
+
+
+        // return Promise.reject(error)
     }
-                   fetch("http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=authentication&login="+credentials.username+"&password="+credentials.password, requestOptions)
-                  .then(response => response.json())
-                  .then(result => {
-                    console.log(result[0],credentials.password);
-                    let role = ''
-                    if (credentials.username.length === 9 && credentials.password.length === 12) {role = 'Student'} // A 18 CS 30 26 (9)  20 19 01 M1 02 99 (12)
-                    else if (credentials.username.length === 5 && credentials.password.length === 7) {role = 'Lecturer'} // 12 08 5 (5) S808323 (7)
-                    else if (credentials.username.length === 6 && credentials.password.length === 8) {role = 'Admin'} //  ad 20 21 (6) sc sx 31 04 (8)
 
-                      let AuthData = {
-                    token: (result[0].session_id) ? result[0].session_id : (result[0].session_id) ? result[0].session_id : '',
-                    name: (result[0].full_name) ? result[0].full_name : '',
-                    role: role,
-                    description: (result[0].description) ? result[0].description : '',
-                    matricNo: (result[0].login_name) ? result[0].login_name : '',
 
-                    //// from database
-                    ////full_name: 'AMIRUL FAIZ BIN AHMAD PUAD', description: 'Pelajar FSKSM', session_id: '571666574537088', login_name: 'B19EC0004'
-                    // token: (result.token) ? result.token : (result.id) ? result.id : '',
-                    // name: (result[0].full_name) ? result[0].full_name : '',
-                    // uid: (result.uid) ? result.uid : '',
-                    // role: 'manager',
-                    // contact: (result.contact) ? result.contact : '',
-                    // created: (result.created) ? Dates.format(result.created, Dates.FORMAT.DATE_TIME1) : ''
-                }
-                this.saveAuthUser(AuthData)
 
-                  })
-
-                  .catch(error => console.log('error', error));
 
 
 

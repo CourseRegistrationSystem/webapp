@@ -1,3 +1,7 @@
+
+
+
+
 const Dashboard = {
   name: 'Dashboard',
   url: '/dashboard',
@@ -71,8 +75,6 @@ const TimeTableStudent = {
   icon: 'icon-calendar',
 }
 
-
-
 const ApproveCourseRegLecturer = {
   name: 'Approve Course Registration',
   url: '/ApproveCourseRegLecturer',
@@ -91,11 +93,62 @@ const Logout = {
   icon: 'icon-logout',
 }
 
+// Admin
+const adminDashboard = {
+  name: 'Dashboard',
+  url: '/DashboardAdmin',
+  icon: 'icon-pie-chart',
+}
+
+const adminAssignSection = {
+  name: 'Assign Section Course',
+  url: '/adminAssignSection',
+  icon: 'icon-people',
+}
+
+const adminAssignLecturer = { // sample
+  name: 'Assign Lecturer Course',
+  url: '/adminAssignLecturer',
+  icon: 'icon-user',
+}
+
+const adminManageCourse = {
+  name: 'Manage Course',
+  url: '/adminAssignLecturer',
+  icon: 'icon-user',
+}
+
+const adminCreateSection = { // sample
+  name: 'Create Section',
+  url: '/adminCreateSection',
+  icon: 'icon-plus',
+}
+
+const adminManageSection = {
+  name: 'Manage Section',
+  url: '/adminCreateSection',
+  icon: 'icon-plus',
+}
+
+const adminRegistrationSession = {
+  name: 'Registration Schedule Session',
+  url: '/adminRegistrationSession',
+  icon: 'icon-clock',
+}
+
+const adminTimeTable = {
+  name: 'Time Table',
+  url: '/adminTimeTable',
+  icon: 'icon-calendar',
+}
+
 export default {
   Basic: { items: [Dashboard,CarDetails,Analysis, Profile,Users ]},
-  Admin: { items: [Dashboard,CarDetails,Analysis,Users ] }, // add Users - demo
   Manager: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTableStudent] },
+
+  Admin: { items: [adminDashboard,adminManageCourse,adminManageSection,adminRegistrationSession,adminTimeTable ] }, // add Users - demo
   Student: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTableStudent] },
   Lecturer: { items: [DashboardStudent,ApproveCourseRegLecturer,TimeTableLecturer] },
+
   Logout: { items: [Logout]},
 };

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Auth } from "../../../api";
-import { CourseActions } from "../../../__actions";
+import { CourseActions,CurriculumActions } from "../../../__actions";
 import { connect } from "react-redux";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
@@ -36,7 +36,8 @@ class Dashboard extends Component {
   }
 
   async componentDidMount() {
-    CourseActions.getCourse(this.props.dispatch);
+    // CourseActions.getCourse(this.props.dispatch);
+    CurriculumActions.getListCurriculum(this.props.dispatch);
   }
 
   render() {
@@ -45,25 +46,12 @@ class Dashboard extends Component {
     let { data } = this.props.dashboard;
     console.log({ data });
 
-
-    let newString = []
     let String = 'dlrow olleh'
     let split = String.split('') // split the array into single char
-
-    console.log(split.length)
-
-    for(let a=1;a<split.length+1;a++){
-      console.log(split[split.length-a])
-      newString.push(split[split.length-a])
-    }
-    console.log(newString)
-    let output = newString.join('') // combine the char into an array
+    let reverse = split.reverse() // arrange the char in reverse
+    let output = reverse.join('') // combine the char into an array
     console.log(output)
-
-    // let reverse = split.reverse() // arrange the char in reverse
-    // let output = reverse.join('') // combine the char into an array
-    // console.log(output)
-
+    
     return (
       <>
         {/* <h2>Dashboard</h2> */}

@@ -8,10 +8,14 @@ let initState = {
   notification: [],
   dataTimeTable: [],
   dataCourses: [],
+  courseRegistrationTable: [],
+  seksyenRegistrationTable: [],
   selectedTimeTable: [],
   selectedSession: [],
   curriculumList: [],
   listErrSystem: [],
+  checkCourseList: [],
+  checkTableList:[],
   errorSystem: {
     id: 0,
     show: false,
@@ -88,8 +92,60 @@ export function course(state = initState, action) {
       }
       return __state;
 
+      case CONSTANTS.COURSE.COURSE_REGISTRATION_LIST: // CompDidMount
+        let courseRegistrationList = action.result
+        console.log(courseRegistrationList)
+        return {
+          checkCourseList: action.result,
+        };
+
+        case CONSTANTS.COURSE.COURSE_REGISTRATION_TABLE:
+          let dataSeksyen = action.dataSeksyen
+          let dataCourse = action.dataCourse // kod_subjek+seksyen
+          // let courseTable = __state.courseRegistrationTable
+          console.log(dataSeksyen,dataCourse)
+          console.log(__state.courseRegistrationTable)
+          
+          return {
+            seksyenRegistrationTable: dataSeksyen,
+            courseRegistrationTable: dataCourse,
+            checkTableList: __state.courseOfferedList,
+            checkCourseList: __state.checkCourseList
+          };
+
+
+
+        case CONSTANTS.COURSE.CHECK_TABLE_LIST:
+          let courseOfferedList = action.result
+          let keyInCode = action.keyInCode
+          if(keyInCode.subjek_list !==null){
+            keyInCode.subjek_list.map(dataListkeyInCode=>{
+              let tableList = []
+              color = getRandomColor()
+              courseOfferedList.map((dataList,index) => {
+                
+                if(dataList.seksyen === dataListkeyInCode.seksyen){
+                  tableList.push(dataList)
+                  dataList.nama_pensyarah = dataListkeyInCode.pensyarah
+                  dataList.nama_subjek = keyInCode.nama_subjek
+                  
+                  dataList.color = color
+                  
+                }
+  
+              })
+              dataListkeyInCode.table = tableList
+              
+            })
+          }
+
+          return {
+            // courseRegistrationTable: __state.courseRegistrationTable,
+            checkTableList: keyInCode,
+            checkCourseList: __state.checkCourseList
+          };
+
     case CONSTANTS.COURSE.LATEST_DATA_SUCCESS:
-      console.log("dah masuk reducer dahboard");
       __state = { ...state };
       __state.data = action.result;
 
@@ -165,8 +221,8 @@ export function course(state = initState, action) {
 
       __state.dataTimeTable = action.result;
       __state.dataCourses = action.courseList;
-      __state.selectedTimeTable = _session; 
-      __state.selectedSession = courses; 
+      __state.selectedTimeTable = _session;
+      __state.selectedSession = courses;
       return __state;
 
       case CONSTANTS.COURSE.GET_SELECTED_TIMETABLE_LIST:
@@ -180,7 +236,7 @@ export function course(state = initState, action) {
           __currentSession = action.result;
           // console.log((data.semester+" "+data.sesi), __currentSession)
           if ((data.semester+" "+data.sesi) === (__currentSession)) {
-  
+
             __courses.push(data);
           } else {
           }
@@ -212,21 +268,45 @@ export function course(state = initState, action) {
         });
         // console.log(__session);
         __state.selectedTimeTable = __session;
-        __state.selectedSession = __courses; 
+        __state.selectedSession = __courses;
         return __state;
 
         case CONSTANTS.COURSE.GET_CURRICULUM_LIST:
-          console.log("dah masuk reducer dahboard");
           __state = { ...state };
           console.log(__state)
           __state.curriculumList = action.result;
+
+          function userExists(kod_subjek) {
+            return action.result.some(function(el) {
+
+
+              // console.log(el.kod_subjek.substr(el.kod_subjek.length - 4))
+              return el.kod_subjek.substr(el.kod_subjek.length - 4) === kod_subjek;
+            });
+          }
+
+          console.log(__state.data)
           __state.data.map((data, index) => {
 
-            let back = data.substr(data.length - 4)
-            console.log(back)
-            console.log(action.result.includes(back))
+            let back = data.kod_subjek.substr(data.kod_subjek.length - 4)
+
+
+
+            // action.result.some(function(el) {
+            //   console.log(el.kod_subjek.substr(data.kod_subjek.length - 4))
+
+            //   return el.kod_subjek.substr(data.kod_subjek.length - 4) === back
+            // })
+
+            console.log(userExists(back));
+
+            if(userExists(back) === false){
+              console.log(data.nama_subjek, data.kod_subjek)
+            }
+
+            // console.log(action.result.includes(back))
           })
-          
+
           console.log(__state.data);
           return __state;
 
@@ -236,3 +316,6 @@ export function course(state = initState, action) {
       return state;
   }
 }
+
+
+
