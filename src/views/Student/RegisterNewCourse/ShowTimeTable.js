@@ -46,7 +46,8 @@ class ShowTimeTable extends Component {
 
   render() {
     // console.log(this.props.data);
-    let data = this.props.data.Registration;
+    let data = this.props.data.registration;
+    console.log(data)
     let showTable = [];
     // let oneClass = []
     let row = {};

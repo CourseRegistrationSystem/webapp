@@ -44,7 +44,7 @@ class DisplayAlreadyRegistered extends Component {
 
   render() {
     let {checkEligible} = this.props
-    // console.log(checkEligible)
+    console.log(checkEligible)
 
     return (
       <div>
