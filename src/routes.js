@@ -28,6 +28,7 @@ const adminAssignSection = React.lazy(() => import('./views/Staff/CourseRegistra
 const adminCreateSection = React.lazy(() => import('./views/Staff/ManageCourse/CreateSection/CreateSection'))
 const adminRegistrationSession = React.lazy(() => import('./views/Staff/ManageCourse/RegistrationScheduleSession/RegistrationScheduleSession'))
 const adminTimeTable = React.lazy(() => import('./views/Staff/ManageCourse/TimeTable/TimeTable'))
+const adminStatistic = React.lazy(() => import('./views/Staff/Statistic/Statistic'))
 
 const routesAdmin = [
   { path: '/', exact: true, name: 'Home' },
@@ -36,6 +37,7 @@ const routesAdmin = [
   { path: '/adminAssignSection', exact: true, name: 'adminAssignSection', component: adminAssignSection },
   { path: '/adminCreateSection', exact: true, name: 'adminCreateSection', component: adminCreateSection },
   { path: '/adminRegistrationSession', exact: true, name: 'adminRegistrationSession', component: adminRegistrationSession },
+  { path: '/adminStatistic', exact: true, name: 'adminStatistic', component: adminStatistic },
   { path: '/adminTimeTable', exact: true, name: 'adminTimeTable', component: adminTimeTable },
   // { path: '/users', exact: true, name: 'Users', component: Users },
   // { path: '/dashboardLecturer', exact: true, name: 'Dashboard', component: DashboardLecturer },

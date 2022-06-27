@@ -40,7 +40,6 @@ class Auth {
         this.saveAuthUser(AuthData)
         return Promise.resolve(AuthData)
     } catch (error) {
-      // try{
 
         var requestOptions = {
           method : 'GET'
@@ -63,12 +62,12 @@ class Auth {
                         matricNo: (result[0].login_name) ? result[0].login_name : '',
                         }
                     this.saveAuthUser(AuthData)
-                      }).catch(error => console.log('error', error));
-      // }catch{}
+                      }).catch(error =>
 
+                        console.log('error', error),
+                        );
 
-
-        // return Promise.reject(error)
+        return Promise.reject(error)
     }
 
 

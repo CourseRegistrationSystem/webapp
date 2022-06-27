@@ -12,6 +12,7 @@ class Dates {
         DATE1: 'yyyy-mm-dd', // 2019-05-05
         DATE2: 'yyyy/mm/dd', // 2019/05/05
         DATE3: 'dd/mm/yyyy', // 05/12/2020
+        DATE4: 'dd mmm yyyy', // 05 Jun 2020
         TIME1: 'HH:MM', // 16:05
         TIME2: 'HH:MM:ss', // 16:05
         TIME3: 'hh:MM TT', // 1:05 AM
@@ -21,6 +22,8 @@ class Dates {
         DATE_TIME3: 'dd/mm/yyyy HH:MM', // 05/12/2020 16:05
         DATE_TIME4: 'dd-mm-yyyy HH:MM:ss', // 05/12/2020 16:05:35
         DATE_TIME5: 'dd/mm/yyyy hh:MM TT', // 05/12/2020 04:05 PM
+        DATE_TIME6: 'yyyy-mm-dd HH:MM:ss', // 2019-05-05 16:05
+
     }
 
     static initDate(datetime) {

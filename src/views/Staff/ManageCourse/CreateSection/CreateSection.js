@@ -94,14 +94,6 @@ class CreateSection extends Component {
 
   onAddSectionClick(e) {
     e.preventDefault();
-    // showMessageSemester: false,
-    // MessageSemester: "",
-    // showMessageSession: false,
-    // MessageSession: "",
-    // showMessageProgram: false,
-    // MessageProgram: "",
-    // showMessageSection: false,
-    // MessageSection: "",
 
     if (this.state.semester !== "") {
       this.setState({ showMessageSemester: false, MessageSemester: "" });

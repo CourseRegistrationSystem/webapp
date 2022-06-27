@@ -6,6 +6,7 @@ import {curriculum} from './curriculum'
 import {student} from './student'
 import {lecturer} from './lecturer'
 import {section} from './section'
+import {registrationSchedule} from './registrationSchedule';
 
 const rootReducer = combineReducers({
   dashboard,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   student,
   lecturer,
   section,
+  registrationSchedule,
 });
 
 export default rootReducer;

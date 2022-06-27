@@ -71,7 +71,7 @@ class TimeTable extends Component {
 
   render() {
     let { selectedSession, selectedTimeTable, session } = this.props.course;
-    // console.log(selectedSession);
+    // console.log(selectedSession,session);
     let time = [
       "7:00am - 7:59am",
       "8:00am - 8:59am",

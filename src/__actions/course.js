@@ -2,11 +2,7 @@ import { text } from "@fortawesome/fontawesome-svg-core";
 import { Auth, CONSTANTS, IRequest, SERVER } from "../api";
 import {
   generateURL,
-  generateLocalStorageName,
-  sortByKey,
-  getLengthToShow,
 } from "../__components/helper";
-import { course } from "../__reducers/course";
 
 import datacurriculum from "../__components/curiculum/2019.json";
 
@@ -17,24 +13,20 @@ export const CourseActions = {
   getCuriculum,
   getCourseRegistrationList,
   checkCourseList,
+  submitRegistration, //database
+  checkEligible, // database
+  getRegistrationListById, // database
+  getRegisteredTimeTable, // database
 };
 
 const user = Auth.getAuthUser();
 console.log(user);
-
 async function getLatestData(dispatch) {
   try {
-    let result = await IRequest.GetQuery(SERVER.API.DeviceData.LatestData);
-    // result["uid"] = uid
-    console.log(result);
-    // if(role == 'admin') {
-    console.log("ok dah masuk constatnt");
-    dispatch({ type: CONSTANTS.COURSE.LATEST_DATA_SUCCESS, result: result });
-    console.log("ok dah keluar constatnt");
-    // }
-    // else {
-    //     dispatch({ type: CONSTANTS.DASHBOARD.LATEST_DATA_SUCCESS_MANAGER, result: result})
-    // }
+    let resultFilter = await IRequest.GetQuery(
+      SERVER.API.Registration.GetRegistrationListById
+    );
+    dispatch({ type: CONSTANTS.COURSE.LATEST_DATA_SUCCESS, result: resultFilter });
   } catch (error) {
     console.log(error);
   }
@@ -42,8 +34,6 @@ async function getLatestData(dispatch) {
 
 async function getCourse(dispatch) {
   try {
-    //http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=pelajar_subjek&no_matrik=B19EC0004
-
     let entityInfo = "";
     if (user.role === "Student") {
       entityInfo = {
@@ -82,7 +72,6 @@ async function getCourse(dispatch) {
 }
 
 async function getTimeTable(dispatch) {
-  console.log(dispatch);
   let courseSlotList = [];
   let courseList = [];
   let lecturerList = [];
@@ -199,7 +188,6 @@ async function getTimeTable(dispatch) {
 }
 
 async function getCuriculum(dispatch) {
-  console.log(datacurriculum);
   dispatch({
     type: CONSTANTS.COURSE.GET_CURRICULUM_LIST,
     result: datacurriculum,
@@ -207,9 +195,8 @@ async function getCuriculum(dispatch) {
 }
 
 async function getCourseRegistrationList(dispatch) {
-  console.log(dispatch);
   fetch(
-    "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=subjek_seksyen&sesi=2019/2020&semester=1"
+    "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=subjek_seksyen&sesi=2017/2018&semester=1"
   )
     .then((response) => response.json())
     .then((data) => {
@@ -221,25 +208,22 @@ async function getCourseRegistrationList(dispatch) {
 }
 
 async function checkCourseList(param, dispatch) {
-  console.log(param);
-  console.log(dispatch);
-  let courseOfferedList = [];
+  // console.log(param);
 
   fetch(
-    "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=subjek_seksyen&sesi=2019/2020&semester=1"
+    "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=subjek_seksyen&sesi=2017/2018&semester=1"
   )
     .then((response) => response.json())
     .then((data) => {
       // console.log(data);
       // listSection.push(data)
-      let array = [];
       data.map((dataList, index) => {
         // array.push(dataList.kod_subjek)
         if (dataList.kod_subjek === param.kod_subjek) {
           // console.log(dataList); // list of seksyen
 
           fetch(
-            "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=jadual_subjek&sesi=2019/2020&semester=1&kod_subjek=" +
+            "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=jadual_subjek&sesi=2017/2018&semester=1&kod_subjek=" +
               param.kod_subjek
           )
             .then((response) => response.json())
@@ -273,4 +257,100 @@ async function checkCourseList(param, dispatch) {
   //     // keyInCode: param,
   //   });
   // })
+}
+
+async function submitRegistration(param) {
+  console.log(param , user)
+  let dataStudent = {semester: param.semester,sesi:param.session, user:user }
+  try {
+    let resultFilter = await IRequest.Post(
+      SERVER.API.Student.RegisterStudent,dataStudent
+    );
+    console.log(resultFilter)
+    // dispatch({ type: CONSTANTS.COURSE.GET_REGISTER_TIME_TABLE, result: resultFilter });
+  } catch (error) {
+    console.log(error);
+  }
+
+  param.map(async(dataList,index) => {
+    let data = {course: dataList,semester: param.semester,sesi:param.session, user:user }
+    try {
+      let result =  await IRequest.Post(SERVER.API.Registration.RegisterCourse,data)
+      return Promise.resolve(result)
+  } catch (error) {
+      // console.log(error)
+      return Promise.reject(error)
+  }
+  })
+
+
+
+}
+
+async function checkEligible(dispatch) {
+  console.log(user)
+    try {
+      let result =  IRequest.Post(SERVER.API.Registration.checkEligible,user)
+      console.log(result)
+
+      result.then(function(result){
+        console.log(result.statusToRegister)
+        dispatch({
+        type: CONSTANTS.COURSE.CHECK_ELIGIBLE,
+        result: result,
+      });
+      })
+      console.log()
+      return Promise.resolve(result)
+  } catch (error) {
+      console.log(error)
+      return Promise.reject(error)
+  }
+
+}
+
+// async function getLatestData(dispatch) {
+//   try {
+//     let result = await IRequest.GetQuery(SERVER.API.DeviceData.LatestData);
+//     // console.log(result);
+//     // if(role == 'admin') {
+//     dispatch({ type: CONSTANTS.COURSE.LATEST_DATA_SUCCESS, result: result });
+//     // }
+//     // else {
+//     //     dispatch({ type: CONSTANTS.DASHBOARD.LATEST_DATA_SUCCESS_MANAGER, result: result})
+//     // }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+async function getRegistrationListById(id,dispatch) {
+  console.log(id,dispatch)
+  try {
+    let filter = {matricNo : id}
+    // console.log(filter)
+    let resultFilter = await IRequest.GetWithFilter(
+      SERVER.API.Registration.GetRegistrationListById,filter
+    );
+
+    console.log(resultFilter)
+
+    // dispatch({ type: CONSTANTS.DEVICEDATA.ALLDATABYID, result: resultFilter });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function getRegisteredTimeTable(id,dispatch) {
+  console.log(id,dispatch)
+  try {
+    let filter = {matricNo : id}
+    let resultFilter = await IRequest.GetWithFilter(
+      SERVER.API.Registration.GetRegistrationListById,filter
+    );
+    console.log(resultFilter)
+    // dispatch({ type: CONSTANTS.COURSE.GET_REGISTER_TIME_TABLE, result: resultFilter });
+  } catch (error) {
+    console.log(error);
+  }
 }

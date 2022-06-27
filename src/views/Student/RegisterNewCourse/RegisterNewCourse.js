@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { CourseActions } from "../../../__actions";
 import Select from 'react-select';
 import RegistrationTable from "./RegistrationTable";
+import DisplayAlreadyRegistered from "./DisplayAlreadyRegistered";
+import { Auth } from "../../../api";
+
 
 import {
   Card,
@@ -10,48 +13,28 @@ import {
   CardHeader,
   CardFooter,
   Table,
-  Col,
-  CardTitle,
-  Form,
-  Label,
-  FormGroup,
-  ListGroupItem,
-  Row,
-  Button,
-  Collapse,
-  ListGroupItemText,
-  Input,
 } from "reactstrap";
-
 
 
 class RegisterNewCourse extends Component {
   constructor(props) {
     super(props);
-
-    // console.log(props);
-    // this.checkSectionAvailability = this.checkSectionAvailability.bind(this);
-    // this.onInputChange = this.onInputChange.bind(this);
-
     this.state = {
       code: '',
       courseName: '',
     }
   }
 
-  componentDidMount(){
-    CourseActions.getCourseRegistrationList(this.props.dispatch)
+  async componentDidMount(){
+      await CourseActions.checkEligible(this.props.dispatch)
+      await CourseActions.getCourseRegistrationList(this.props.dispatch)
   }
 
   render() {
+    const user = Auth.getAuthUser();
+    let {checkCourseList,checkEligible} = this.props.course
+    console.log(checkCourseList,checkEligible,user)
 
-    let {checkCourseList} = this.props.course
-    let option = []
-    var data = checkCourseList.map(data=>{
-      option.push({value: data, nama_subjek: data.nama_subjek, label: (data.kod_subjek +" - "+ data.nama_subjek)})
-    });
-
-    
     return (
       <>
         <Card className="shadow animated fadeIn rounded">
@@ -64,40 +47,25 @@ class RegisterNewCourse extends Component {
                 <tr>
                   <th className="col-2">Name</th>
                   <td style={{ width: "10px" }}>:</td>
-                  <td>Nur Atiqah Binti Morshidi</td>
+                  <td>{user.name.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase())}{" "}</td>
                 </tr>
               </thead>
 
               <tbody className="mb-5">
                 <tr width="10px">
-                  <th scope="row">Faculty</th>
+                  <th scope="row">Student Profile</th>
                   <td>:</td>
-                  <td>Science</td>
-                </tr>
-                <tr width="10px">
-                  <th scope="row">Field</th>
-                  <td>:</td>
-                  <td>Data Analytic</td>
-                </tr>
-                <tr width="10px">
-                  <th scope="row">Current Year</th>
-                  <td>:</td>
-                  <td>2021/2022</td>
-                </tr>
-                <tr width="10px">
-                  <th scope="row">Section</th>
-                  <td>:</td>
-                  <td>24</td>
+                  <td>{user.description}</td>
                 </tr>
                 <tr width="10px">
                   <th scope="row">Registration Course Session</th>
                   <td>:</td>
-                  <td>2021/2022</td>
+                  <td>{checkEligible.data?(checkEligible.data.session):("No schedule")}</td>
                 </tr>
                 <tr width="10px">
                   <th scope="row">Registration Course Semester</th>
                   <td>:</td>
-                  <td>2</td>
+                  <td>{checkEligible.data?(checkEligible.data.semester):("No schedule")}</td>
                 </tr>
               </tbody>
             </Table>
@@ -107,9 +75,16 @@ class RegisterNewCourse extends Component {
           </CardFooter>
         </Card>
 
-      <RegistrationTable checkCourseList = {checkCourseList}></RegistrationTable>
+      {/* {console.log(checkEligible)} */}
+      {checkEligible.status === true?(
+        <RegistrationTable checkCourseList = {checkCourseList} checkEligible = {checkEligible}></RegistrationTable>
+      ):(
+        <DisplayAlreadyRegistered checkEligible={checkEligible}></DisplayAlreadyRegistered>
+        // checkEligible.status
+      )}
 
-      
+
+
       </>
     );
   }

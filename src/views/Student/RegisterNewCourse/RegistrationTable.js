@@ -29,12 +29,17 @@ class RegistrationTable extends Component {
     // console.log(props);
     this.checkSectionAvailability = this.checkSectionAvailability.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.onSubmitRegistrationClick = this.onSubmitRegistrationClick.bind(this);
+
 
     this.state = {
+      showMessage: true,
+      Message: "",
       code: "",
       courseName: "",
       count: [],
       course: [],
+      forSubmitRegistration: [],
     };
   }
 
@@ -68,10 +73,29 @@ class RegistrationTable extends Component {
     // });
   };
 
+
+
+  async onSubmitRegistrationClick(e) {
+    this.state.forSubmitRegistration.session = (this.props.checkEligible.data.session)
+    this.state.forSubmitRegistration.semester = (this.props.checkEligible.data.semester)
+      await CourseActions.submitRegistration(this.state.forSubmitRegistration).then(
+      (result) => {
+        console.log(result)
+        CourseActions.checkEligible(this.props.dispatch)
+        CourseActions.getCourseRegistrationList(this.props.dispatch)
+      },
+      (error) => {
+        console.log(error)
+          this.setState({
+            showMessage: true,
+            Message: +error,
+          });
+      }
+    );
+  }
+
   onInputChange(e) {
-    console.log(e);
     const { value, nama_subjek } = e;
-    console.log(value);
     this.setState({
       kod_subjek: value.kod_subjek,
       nama_subjek: nama_subjek,
@@ -103,44 +127,47 @@ class RegistrationTable extends Component {
       courseRegistrationTable,
       seksyenRegistrationTable,
     } = this.props.course;
-    console.log(
-      checkTableList,
-      courseRegistrationTable,
-      seksyenRegistrationTable
-    );
-    let option = [];
-    var data = checkCourseList.map((data) => {
-      option.push({
-        value: data,
-        nama_subjek: data.nama_subjek,
-        label: data.kod_subjek + " - " + data.nama_subjek,
-      });
-    });
 
-    if (seksyenRegistrationTable !== undefined) {
-      if (seksyenRegistrationTable.table !== undefined) {
-        seksyenRegistrationTable.table.map((dataList, index) => {
-          
-          this.state.count.push(dataList);
-          
-
-          
-
-        });
-      }
-    }
+    // let option = [];
+    // checkCourseList.map((data) => {
+    //   option.push({
+    //     value: data,
+    //     nama_subjek: data.nama_subjek,
+    //     label: data.kod_subjek + " - " + data.nama_subjek,
+    //   });
+    // });
 
     if (
       courseRegistrationTable !== undefined && courseRegistrationTable.courseSeksyen
     ) {
-      this.state.course.push(courseRegistrationTable);
-     
+
+      if(this.state.course !==0){
+
+        let data = []
+        this.state.course.map((dataList) => data.push(dataList.courseSeksyen))
+        if(  data.includes(courseRegistrationTable.courseSeksyen)){  //avoid same data insert in the list
+          console.log('includes')
+        }else{
+          this.state.forSubmitRegistration.push(seksyenRegistrationTable);
+          this.state.course.push(courseRegistrationTable);
+          console.log(courseRegistrationTable,seksyenRegistrationTable)
+          console.log(this.state.course)
+          seksyenRegistrationTable.table.map((dataList, index) => {
+
+            if(this.state.count){}
+            this.state.count.push(dataList); // just want to get jadual
+          });
+        }
+      }
+
+
+
     }
 
-    console.log(seksyenRegistrationTable);
-    console.log(this.state.count); //get all data in seksyen
-    console.log(courseRegistrationTable);
-    console.log(this.state.course);
+    // console.log(seksyenRegistrationTable);
+    // console.log(this.state.count); //get all data in seksyen
+    // console.log(courseRegistrationTable);
+    // console.log(this.state.course);
     return (
       <>
         <Card>
@@ -154,7 +181,7 @@ class RegistrationTable extends Component {
                       isSearchable={true}
                       name="code"
                       onChange={this.onInputChange}
-                      options={option}
+                      options={checkCourseList}
                     />
                   </FormGroup>
                 </Col>
@@ -200,7 +227,7 @@ class RegistrationTable extends Component {
                           </td>
                         </tr>
                       ) : (
-            
+
                         checkTableList.subjek_list.map((data, index) => (
                           <>
                             <CourseKeyInList
@@ -294,9 +321,9 @@ class RegistrationTable extends Component {
                                         {data.kod_subjek} ({data.seksyen})
                                         <div>{data.nama_subjek}</div>
                                         <div>{data.nama_pensyarah}</div>
-                                     
+
                                       </div>
-                                   
+
                                     );
                                   } else {
                                     return "";
@@ -317,12 +344,12 @@ class RegistrationTable extends Component {
                 color: "white",
                 background: "green",
               }}
-              onClick={() => this.onAddSectionClick()}
+              onClick={() => this.onSubmitRegistrationClick()}
             >
               submit
             </Button>
           </CardBody>
-         
+
         </Card>
       </>
     );
@@ -348,16 +375,14 @@ class CourseKeyInList extends Component {
 
   onAddSectionClick = (dataSeksyen, dataCourse) => {
     // e.preventDefault()
-    console.log(dataSeksyen, dataCourse);
+    // console.log(dataSeksyen, dataCourse);
     let insertCourseData = {courseSeksyen: dataCourse.kod_subjek + dataSeksyen.seksyen}
-    
-    console.log(insertCourseData);
     const { dispatch } = this.props;
-    console.log(dispatch);
     dispatch({
       type: "COURSE_REGISTRATION_TABLE",
       dataSeksyen: dataSeksyen,
-      dataCourse: insertCourseData,
+      dataCourse: dataCourse,
+      insertCourseData: insertCourseData,
     });
     // this.setState({courseRegistrationTable: courseRegistrationTable.push(e)});
   };
@@ -407,8 +432,6 @@ class CourseKeyInList extends Component {
         </td>
         <td align="left">{dataSeksyen.pensyarah}</td>
         <td>
-          {console.log(data,{kod_subjek: dataCourse.kod_subjek, seksyen: dataSeksyen.seksyen })}
-          {console.log(data.includes(dataCourse.kod_subjek+dataSeksyen.seksyen))}
 
           {(data.includes(dataCourse.kod_subjek+dataSeksyen.seksyen)?(
             <Button
@@ -431,8 +454,8 @@ class CourseKeyInList extends Component {
           >
             Insert
           </Button>))}
-         
-          
+
+
         </td>
       </tr>
     );

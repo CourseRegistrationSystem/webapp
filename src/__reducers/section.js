@@ -2,6 +2,7 @@ import { CONSTANTS } from '../api';
 let initState = {
     dataSection: [], graph: null, message: '', notification: [],
     listErrSystem: [],
+    sectionListById: [],
     errorSystem: { id: 0, show: false, types: '', value: '', resolve: false, datetime: '' }
 }
 
@@ -67,6 +68,14 @@ export function section(state = initState, action) {
                 __state.dataSection = action.result
 
             return __state
+
+            case CONSTANTS.SECTION.SECTION_LIST_BY_ID:
+              __state = {...state}
+              __state.sectionListById = action.result
+
+          return __state
+
+            
 
             case CONSTANTS.SECTION.GET_COURSE_LIST:
                 // console.log('dah masuk reducer dahboard')

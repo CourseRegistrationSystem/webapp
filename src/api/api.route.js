@@ -69,6 +69,7 @@ export const SERVER = {
     Student: {
       Student: API_ROUTE + "/Students",
       StudentList: API_ROUTE + "/Students/listStudent",
+      RegisterStudent: API_ROUTE + '/Students/register',
       Statistic: API_ROUTE + "/Students/devicestatistic",
       Delete: API_ROUTE + "/Students/",
       Update: API_ROUTE + "/Students/update",
@@ -97,6 +98,7 @@ export const SERVER = {
       Statistic: API_ROUTE + "/Sections/devicestatistic",
       Delete: API_ROUTE + "/Sections/",
       Update: API_ROUTE + "/Sections/update",
+      getSectionMemberListById: API_ROUTE + "/Sections/getSectionMemberListById",
 
       UpdateById: (id) => {
         return API_ROUTE + "/Section/updateSection/" + id;
@@ -112,6 +114,34 @@ export const SERVER = {
 
       UpdateById: (id) => {
         return API_ROUTE + "/Devices/updateDevice/" + id;
+      },
+    },
+
+    Registration: {
+      checkEligible: API_ROUTE + '/Registrations/checkEligible',
+      Registration: API_ROUTE + "/Registrations",
+      RegisterCourse: API_ROUTE + '/Registrations/register',
+      RegistrationList: API_ROUTE + "/Registrations/list",
+      Statistic: API_ROUTE + "/Registrations/devicestatistic",
+      Delete: API_ROUTE + "/Registrations/",
+      Update: API_ROUTE + "/Registrations/update",
+      GetRegistrationListById: API_ROUTE + "/Registrations/getRegistrationListById",
+
+      UpdateById: (id) => {
+        return API_ROUTE + "/Registrations/updateRegistration/" + id;
+      },
+    },
+
+    RegistrationSchedule: {
+      RegistrationSchedule: API_ROUTE + "/RegistrationSchedules",
+      RegisterSchedule: API_ROUTE + '/RegistrationSchedules/register',
+      RegistrationScheduleList: API_ROUTE + "/RegistrationSchedules/list",
+      Statistic: API_ROUTE + "/RegistrationSchedules/devicestatistic",
+      Delete: API_ROUTE + "/RegistrationSchedules/",
+      Update: API_ROUTE + "/RegistrationSchedules/update",
+
+      UpdateById: (id) => {
+        return API_ROUTE + "/RegistrationSchedules/updateRegistrationSchedule/" + id;
       },
     },
 
