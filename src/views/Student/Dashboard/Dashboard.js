@@ -26,6 +26,7 @@ import {
   ListGroupItemText,
   Input,
   Badge,
+  Label
 } from "reactstrap";
 
 TimeAgo.addDefaultLocale(en);
@@ -74,20 +75,24 @@ class Dashboard extends Component {
             </h2>
           </CardHeader>
           <CardBody>
-            <h3>Important Message</h3>
+          <h3>Personal Information</h3>
             <div>Name : {user.name.toLowerCase().replace(/\b(\w)/g, (s) => s.toUpperCase())}{" "}</div>
             <div>Matric No : {user.matricNo}</div>
             <div>Status : {user.description}</div>
             <div>Role : {user.role}</div>
           </CardBody>
           <CardFooter>
-            <div>This is footer</div>
+          <div className="small">* Your data information is confidential</div>
             {data.map}
           </CardFooter>
         </Card>
 
 {checkEligible.status === true?(
-        "Need to register"
+         <Card>
+         <CardBody>
+         <Label>{checkEligible.message}</Label>
+           </CardBody>
+           </Card>
       ):(
         <DisplayAlreadyRegistered checkEligible={checkEligible}></DisplayAlreadyRegistered>
         // checkEligible.status

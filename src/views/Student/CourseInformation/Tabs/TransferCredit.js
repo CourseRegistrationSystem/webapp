@@ -32,7 +32,7 @@ class TransferCredit extends Component {
                 <th>Course Name</th>
                 <th>Section</th>
                 <th>Semester/Session</th>
-                <th>Status</th>
+                {/* <th>Status</th> */}
                 <th>Year</th>
               </tr>
             </thead>
@@ -86,13 +86,13 @@ class TakenCourseRow extends Component {
                 <td>{data.nama_subjek}</td>
                 <td>{data.seksyen}</td>
                 <td>{data.semester} - {data.sesi}</td>
-                <td>
+                {/* <td>
                   <Badge className="p-2" color="green" pill>
                     Able to register
                     {data.status}
 
                   </Badge>
-                </td>
+                </td> */}
                 <td>{data.tahun_kursus}</td>
 
               </tr>

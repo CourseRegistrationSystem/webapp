@@ -24,8 +24,9 @@ console.log(user);
 async function getLatestData(dispatch) {
   try {
     let resultFilter = await IRequest.GetQuery(
-      SERVER.API.Registration.GetRegistrationListById
+      SERVER.API.Course.CourseList
     );
+    // console.log(resultFilter)
     dispatch({ type: CONSTANTS.COURSE.LATEST_DATA_SUCCESS, result: resultFilter });
   } catch (error) {
     console.log(error);
@@ -96,6 +97,7 @@ async function getTimeTable(dispatch) {
       };
     }
     let url = generateURL(entityInfo);
+    console.log(url)
 
     fetch(url)
       .then((response) => response.json())
@@ -188,10 +190,23 @@ async function getTimeTable(dispatch) {
 }
 
 async function getCuriculum(dispatch) {
-  dispatch({
-    type: CONSTANTS.COURSE.GET_CURRICULUM_LIST,
-    result: datacurriculum,
-  });
+  // dispatch({
+  //   type: CONSTANTS.COURSE.GET_CURRICULUM_LIST,
+  //   result: datacurriculum,
+  // });
+
+  fetch(
+    "http://web.fc.utm.my/ttms/web_man_webservice_json.cgi?entity=subjek_seksyen&sesi=2017/2018&semester=1"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      dispatch({
+        type: CONSTANTS.COURSE.GET_CURRICULUM_LIST,
+        result: data,
+        sesi: '2017/2018',
+        semester: 1,
+      });
+    });
 }
 
 async function getCourseRegistrationList(dispatch) {

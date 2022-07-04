@@ -143,8 +143,8 @@ const adminTimeTable = {
 }
 
 const AdminStatistic = {
-  name: 'Statistic',
-  url: '/adminStatistic',
+  name: 'Record',
+  url: '/adminRecord',
   icon: 'icon-calendar',
 }
 
@@ -152,9 +152,9 @@ export default {
   Basic: { items: [Dashboard,CarDetails,Analysis, Profile,Users ]},
   Manager: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTableStudent] },
 
-  Admin: { items: [adminDashboard,AdminStatistic,adminRegistrationSession,adminTimeTable ] }, // add Users - demo
+  Admin: { items: [adminDashboard,AdminStatistic,adminRegistrationSession ] }, // add Users - demo
   Student: { items: [DashboardStudent,RegisterNewCourse,CourseInformation,GroupSectionInformation,TimeTableStudent] },
-  Lecturer: { items: [DashboardStudent,ApproveCourseRegLecturer,TimeTableLecturer] },
+  Lecturer: { items: [DashboardStudent,TimeTableLecturer] },
 
   Logout: { items: [Logout]},
 };

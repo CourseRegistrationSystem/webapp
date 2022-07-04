@@ -48,11 +48,31 @@ class DisplayAlreadyRegistered extends Component {
 
     return (
       <div>
-        <Card>
+          <Card>
           <CardBody>
-            {(checkEligible.type === 2)?(<ShowTimeTable data={checkEligible.data.registerDetails}></ShowTimeTable>):( checkEligible.message)}
-          </CardBody>
-        </Card>
+
+          {checkEligible.type === 2 ? (
+           <ShowTimeTable checkEligible={checkEligible} data={checkEligible.data.registerDetails}></ShowTimeTable>
+// ""
+          ):((checkEligible.type === 3)?(
+            <><div className="text-center h1">{"Registration session is in schedule"}</div>
+          <div className="text-center h3">
+              {Dates.format(
+                checkEligible.data.startDateTime,
+                Dates.FORMAT.DATE_TIME5
+              )}
+              {" - "}
+              {Dates.format(
+                checkEligible.data.endDateTime,
+                Dates.FORMAT.DATE_TIME5
+              )}
+            </div>
+
+            </>
+          ):(<div className="text-center h1">{checkEligible.message}</div>))}
+
+            </CardBody>
+            </Card>
 
         {(checkEligible.type === 1)?(
 

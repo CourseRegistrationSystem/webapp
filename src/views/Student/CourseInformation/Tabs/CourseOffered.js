@@ -20,12 +20,7 @@ class CourseOffered extends Component {
   render() {
     return (
       <>
-      <Row>
-                <Col sm="12" className="mb-3">
-                  <h3>Course Offered List</h3>
-                </Col>
-              </Row>
-              <Card>
+
                 {/* <Table hover responsive size="md">
                   <thead>
                     <tr>
@@ -78,8 +73,8 @@ class CourseOffered extends Component {
                 <th>Course Name</th>
                 <th>Section</th>
                 <th>Semester/Session</th>
-                <th>Status</th>
-                <th>Year</th>
+                {/* <th>Status</th>
+                <th>Year</th> */}
               </tr>
             </thead>
             <tbody>
@@ -97,6 +92,8 @@ class CourseOffered extends Component {
                         key={index}
                         numbers={index}
                         data={data}
+                        sesi={this.props.curriculumList.sesi}
+                        semester={this.props.curriculumList.semester}
                         // dispatch={this.props.dispatch}
                         // authorization={this.props.authorization}
                         />
@@ -104,7 +101,7 @@ class CourseOffered extends Component {
                     }
             </tbody>
           </Table>
-              </Card></>
+            </>
     );
   }
 }
@@ -112,8 +109,25 @@ class CourseOffered extends Component {
 class TakenCourseRow extends Component {
   render() {
     const data = this.props.data
+    const sesi = this.props.sesi
+    const semester = this.props.semester
     const numbers = this.props.numbers
+    console.log(data.seksyen_list)
 
+    let arrSection = ''
+    if(data.seksyen_list !== null){
+
+      data.seksyen_list.map((dataList,index) => {
+        if(index === 0){
+          arrSection = dataList.seksyen
+        }else{
+          arrSection = dataList.seksyen +', '+ arrSection
+        }
+
+      })
+    }else{
+      arrSection = 'No section assigned'
+    }
     let number =  numbers + 1
 //     kod_kursus: "SECJ"
 // kod_subjek: "SCSD3761"
@@ -128,18 +142,29 @@ class TakenCourseRow extends Component {
                 <th scope="row">{number}</th>
                 <td style={{ color: "DodgerBlue" }}>{data.kod_subjek}</td>
                 <td>{data.nama_subjek}</td>
-                <td>{data.mod_elektif}</td>
-                <td>{data.semester_ambil} - {data.tahun_ambil}</td>
-                <td>
+                <td>{arrSection}</td>
+                <td>{semester} - {sesi}</td>
+                {/* <td>
                   <Badge className="p-2" color="green" pill>
 
                     {data.mod_elektif === 1?('Elective Subject'):('')}
 
                   </Badge>
                 </td>
-                <td>{data.tahun_kursus}</td>
+                <td>{data.tahun_kursus}</td> */}
 
               </tr>
+    );
+  }
+}
+
+
+class sectionList extends Component {
+  render() {
+    return (
+      <div>
+
+      </div>
     );
   }
 }

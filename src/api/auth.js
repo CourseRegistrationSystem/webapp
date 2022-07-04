@@ -1,5 +1,8 @@
+
+
 import { IRequest, SERVER } from '../api';
 import Dates from '../__ifunc/dates'
+import alertify from 'alertifyjs'
 const Package = require('../../package.json')
 const APPS_AUTH_USER = '__apps__' + Package.name;
 const STORAGE = 'session'; // local|session
@@ -40,6 +43,7 @@ class Auth {
         this.saveAuthUser(AuthData)
         return Promise.resolve(AuthData)
     } catch (error) {
+      // try{
 
         var requestOptions = {
           method : 'GET'
@@ -62,12 +66,12 @@ class Auth {
                         matricNo: (result[0].login_name) ? result[0].login_name : '',
                         }
                     this.saveAuthUser(AuthData)
-                      }).catch(error =>
+                      }).catch(error => alertify.error('Fail to Login'));
+      // }catch{}
 
-                        console.log('error', error),
-                        );
 
-        return Promise.reject(error)
+
+        // return Promise.reject(error)
     }
 
 
@@ -137,3 +141,4 @@ class Auth {
     }
 }
 export default Auth;
+

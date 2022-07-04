@@ -38,11 +38,12 @@ class CourseInformation extends Component {
   }
 
   async componentDidMount() {
-    CourseActions.getCourse(this.props.dispatch)
-    CourseActions.getCuriculum(this.props.dispatch)
+    await CourseActions.getCourse(this.props.dispatch)
+    await CourseActions.getCuriculum(this.props.dispatch)
+    await CourseActions.checkEligible(this.props.dispatch)
   }
   render() {
-    let {data,curriculumList} = this.props.course
+    let {data,curriculumList,checkEligible} = this.props.course
     // console.log(data)
     return (
       <>
@@ -56,14 +57,14 @@ class CourseInformation extends Component {
                 Course Offered
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink
                 className={this.state.activeTab === "2" ? "active" : ""}
                 onClick={() => this.toggle("2")}
               >
                 Remaining Course
               </NavLink>
-            </NavItem>
+            </NavItem> */}
             <NavItem>
               <NavLink
                 className={this.state.activeTab === "3" ? "active" : ""}
@@ -72,20 +73,36 @@ class CourseInformation extends Component {
                 Transfer Credit
               </NavLink>
             </NavItem>
-            <NavItem>
+            {/* <NavItem>
               <NavLink
                 className={this.state.activeTab === "4" ? "active" : ""}
                 onClick={() => this.toggle("4")}
               >
                 More Tabs
               </NavLink>
-            </NavItem>
+            </NavItem> */}
           </Nav>
           <TabContent activeTab={this.state.activeTab}>
             <TabPane tabId="1">
-              <CourseOffered data={data} curriculumList={curriculumList}>
+            <Row>
+                <Col sm="12" className="mb-3">
+                  <h3>Course Offered List</h3>
+                </Col>
+              </Row>
+              <Card>
+                {/* {checkEligible.message} */}
+              {(checkEligible.type !== 4)?(<CourseOffered data={data} curriculumList={curriculumList}></CourseOffered>):( checkEligible.message)}
 
-              </CourseOffered>
+              </Card>
+
+            {/* {checkEligible.status === true?(
+        <CourseOffered checkCourseList = {checkCourseList} checkEligible = {checkEligible}></CourseOffered>
+      ):(
+        ""
+        // checkEligible.status
+      )} */}
+
+
 
             </TabPane>
 

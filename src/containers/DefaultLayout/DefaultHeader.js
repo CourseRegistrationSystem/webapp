@@ -38,7 +38,7 @@ class DefaultHeader extends Component {
 
   tick() {
     this.setState({
-      timer: Dates.format(new Date(), Dates.FORMAT.DATE_TIME4),
+      timer: Dates.format(new Date(), Dates.FORMAT.DATE_TIME7),
     });
     // console.log(this.state.timer)
   }
@@ -64,26 +64,13 @@ class DefaultHeader extends Component {
           </Nav>
 
         <Nav className="ml-auto bg-white radius-30 mr-2" navbar>
-          {/* <NavItem className="d-md-down-none bg-secondary font-weight-bold pl-2 pr-1 radius-l-30" style={{ height:'40px' }}>
-            <div className="px-2 pt-2 text-p">{this.props.authorization.user && this.props.authorization.user.name}</div>
-          </NavItem> */}
-          <Nav className="ml-auto bg-white radius-30 mr-1" navbar>
-            <NavItem>
-             <div  className="date">
-             <p>{this.state.timer}</p>
+        <Nav className="ml-auto bg-white radius-30 mr-2" navbar>
+        <div >
+             <strong>{this.state.timer}</strong>
              </div>
-            </NavItem>
-            </Nav>
-          <NavItem className="d-sm-down-none mr-2 ml-4 ml-lg-2">
-            {/* <NavLink to="/profile" className="nav-link"><i className="icon-user mr-2"></i>Profile</NavLink> */}
-          </NavItem>
-          <Link className="d-sm-down-none mx-2"  onClick={e => this.props.onLogout(e)}>
-            {/* <NavLink to="#" className="nav-link"><i className="icon-logout mr-2"></i>Logout</NavLink> */}
+          </Nav>
 
-          </Link>
-          <NavItem style={{ minWidth: "40px", width: "45px" }}>
-            <NavLink to="/profile" className="nav-link hover-shadow"><img src={imgprofile} className="img-avatar mx-0" style={{ height: "40px", width: "40px" }} alt="admin@bootstrapmaster.com" /></NavLink>
-          </NavItem>
+
         </Nav>
       </React.Fragment>
     );

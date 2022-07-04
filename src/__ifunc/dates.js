@@ -23,6 +23,7 @@ class Dates {
         DATE_TIME4: 'dd-mm-yyyy HH:MM:ss', // 05/12/2020 16:05:35
         DATE_TIME5: 'dd/mm/yyyy hh:MM TT', // 05/12/2020 04:05 PM
         DATE_TIME6: 'yyyy-mm-dd HH:MM:ss', // 2019-05-05 16:05
+        DATE_TIME7: 'dd/mm/yyyy hh:MM:ss TT', // 05/12/2020 04:05:25 PM
 
     }
 

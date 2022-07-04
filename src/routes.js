@@ -28,30 +28,32 @@ const adminAssignSection = React.lazy(() => import('./views/Staff/CourseRegistra
 const adminCreateSection = React.lazy(() => import('./views/Staff/ManageCourse/CreateSection/CreateSection'))
 const adminRegistrationSession = React.lazy(() => import('./views/Staff/ManageCourse/RegistrationScheduleSession/RegistrationScheduleSession'))
 const adminTimeTable = React.lazy(() => import('./views/Staff/ManageCourse/TimeTable/TimeTable'))
-const adminStatistic = React.lazy(() => import('./views/Staff/Statistic/Statistic'))
+const adminRecord = React.lazy(() => import('./views/Staff/Statistic/Statistic'))
 
-const routesAdmin = [
-  { path: '/', exact: true, name: 'Home' },
-  { path: '/DashboardAdmin', name: 'Dashboard', component: DashboardAdmin },
-  { path: '/adminAssignLecturer', exact: true, name: 'adminAssignLecturer', component: adminAssignLecturer },
-  { path: '/adminAssignSection', exact: true, name: 'adminAssignSection', component: adminAssignSection },
-  { path: '/adminCreateSection', exact: true, name: 'adminCreateSection', component: adminCreateSection },
-  { path: '/adminRegistrationSession', exact: true, name: 'adminRegistrationSession', component: adminRegistrationSession },
-  { path: '/adminStatistic', exact: true, name: 'adminStatistic', component: adminStatistic },
-  { path: '/adminTimeTable', exact: true, name: 'adminTimeTable', component: adminTimeTable },
-  // { path: '/users', exact: true, name: 'Users', component: Users },
-  // { path: '/dashboardLecturer', exact: true, name: 'Dashboard', component: DashboardLecturer },
-];
+
 
 const routesManager = [
   { path: '/', exact: true, name: 'Home' },
   // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/profile', exact: true, name: 'Profile', component: Profile },
   { path: '/dashboardStudent', exact: true, name: 'Dashboard', component: DashboardStudent },
-  { path: '/CourseInformation', exact: true, name: 'CourseInformation', component: CourseInformation },
-  { path: '/GroupSectionInformation', exact: true, name: 'GroupSectionInformation', component: GroupSectionInformation },
-  { path: '/RegisterNewCourse', exact: true, name: 'RegisterNewCourse', component: RegisterNewCourse },
+  { path: '/CourseInformation', exact: true, name: 'Course Information', component: CourseInformation },
+  { path: '/GroupSectionInformation', exact: true, name: 'Group Section Information', component: GroupSectionInformation },
+  { path: '/RegisterNewCourse', exact: true, name: 'Register New Course', component: RegisterNewCourse },
   { path: '/TimeTableStudent', exact: true, name: 'TimeTable', component: TimeTableStudent },
+];
+
+const routesAdmin = [
+  { path: '/', exact: true, name: 'Home' },
+  { path: '/dashboard', name: 'Dashboard', component: DashboardAdmin },
+  { path: '/adminAssignLecturer', exact: true, name: 'admin Assign Lecturer', component: adminAssignLecturer },
+  { path: '/adminAssignSection', exact: true, name: 'admin Assign Section', component: adminAssignSection },
+  { path: '/adminCreateSection', exact: true, name: 'admin Create Section', component: adminCreateSection },
+  { path: '/adminRegistrationSession', exact: true, name: 'adminRegistrationSession', component: adminRegistrationSession },
+  { path: '/adminRecord', exact: true, name: 'Admin Record', component: adminRecord },
+  { path: '/adminTimeTable', exact: true, name: 'Admin TimeTable', component: adminTimeTable },
+  // { path: '/users', exact: true, name: 'Users', component: Users },
+  // { path: '/dashboardLecturer', exact: true, name: 'Dashboard', component: DashboardLecturer },
 ];
 
 const routesStudent = [
@@ -59,9 +61,9 @@ const routesStudent = [
   // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/profile', exact: true, name: 'Profile', component: Profile },
   { path: '/dashboard', exact: true, name: 'Dashboard', component: DashboardStudent },
-  { path: '/CourseInformation', exact: true, name: 'CourseInformation', component: CourseInformation },
-  { path: '/GroupSectionInformation', exact: true, name: 'GroupSectionInformation', component: GroupSectionInformation },
-  { path: '/RegisterNewCourse', exact: true, name: 'RegisterNewCourse', component: RegisterNewCourse },
+  { path: '/CourseInformation', exact: true, name: 'Course Information', component: CourseInformation },
+  { path: '/GroupSectionInformation', exact: true, name: 'Group Section Information', component: GroupSectionInformation },
+  { path: '/RegisterNewCourse', exact: true, name: 'Register New Course', component: RegisterNewCourse },
   { path: '/TimeTableStudent', exact: true, name: 'TimeTable', component: TimeTableStudent },
 ];
 
@@ -70,7 +72,7 @@ const routesLecturer = [
   // { path: '/dashboard', name: 'Dashboard', component: Dashboard },
   { path: '/profile', exact: true, name: 'Profile', component: Profile },
   { path: '/dashboard', exact: true, name: 'Dashboard', component: DashboardLecturer },
-  { path: '/ApproveCourseRegLecturer', exact: true, name: 'ApproveCourseRegLecturer', component: ApproveCourseRegLecturer },
+  { path: '/ApproveCourseRegLecturer', exact: true, name: 'Approve Course Reg Lecturer', component: ApproveCourseRegLecturer },
   { path: '/TimeTableLecturer', exact: true, name: 'TimeTable', component: TimeTableLecturer },
 ];
 

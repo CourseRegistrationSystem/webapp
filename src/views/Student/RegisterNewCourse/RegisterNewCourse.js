@@ -71,7 +71,7 @@ class RegisterNewCourse extends Component {
             </Table>
           </CardBody>
           <CardFooter>
-            <div>This is footer</div>
+          <div className="small">* Your data information is confidential</div>
           </CardFooter>
         </Card>
 

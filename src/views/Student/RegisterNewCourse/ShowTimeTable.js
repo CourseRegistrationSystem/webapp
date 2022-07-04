@@ -46,8 +46,9 @@ class ShowTimeTable extends Component {
 
   render() {
     // console.log(this.props.data);
-    let data = this.props.data.registration;
-    console.log(data)
+    let data = this.props.data.Registration;
+    let checkEligible = this.props.checkEligible
+    console.log(data,checkEligible)
     let showTable = [];
     // let oneClass = []
     let row = {};
@@ -106,7 +107,9 @@ class ShowTimeTable extends Component {
     let day = [1, 2, 3, 4, 5, 6, 7];
     return (
       <div>
-        <Label className="h4">Registered Time Table</Label>
+        <Label className="h2">{"Time Table"}  </Label>
+        <div className="h4">Semester:  {checkEligible.data.semester}</div>
+        <div className="h4">Session: {checkEligible.data.session}</div>
         <Table bordered size="sm">
           <thead>
             <tr
@@ -161,7 +164,7 @@ class ShowTimeTable extends Component {
                                     dataList.section.course.kod_subjek;
                                   row.section = dataList.section.section;
                                   row.tableList = tableList;
-                                  row.color = color
+                                  // row.color = color
 
                                   if (
                                     row.tableList.masa === indexTime + 1 &&
@@ -219,6 +222,8 @@ class ShowTimeTable extends Component {
             )}
           </tbody>
         </Table>
+
+
       </div>
     );
   }

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Auth } from "../../../api";
-import { CourseActions,CurriculumActions } from "../../../__actions";
+import { CourseActions } from "../../../__actions";
 import { connect } from "react-redux";
 import TimeAgo from "javascript-time-ago";
 import en from "javascript-time-ago/locale/en.json";
+import countdown from "countdown";
+import Dates from "../../../__ifunc/dates";
 
 import {
   Card,
@@ -20,6 +22,7 @@ import {
   ListGroupItemText,
   Input,
   Badge,
+  Label
 } from "reactstrap";
 
 TimeAgo.addDefaultLocale(en);
@@ -36,22 +39,20 @@ class Dashboard extends Component {
   }
 
   async componentDidMount() {
-    // CourseActions.getCourse(this.props.dispatch);
-    CurriculumActions.getListCurriculum(this.props.dispatch);
+    await CourseActions.checkEligible(this.props.dispatch);
+    setInterval(() => {
+      this.setState({
+        // curTime : date
+      });
+      // console.log(this.state.curTime)
+    }, 1000);
   }
 
   render() {
     const user = Auth.getAuthUser();
-    console.log(this.props.dashboard);
     let { data } = this.props.dashboard;
-    console.log({ data });
-
-    let String = 'dlrow olleh'
-    let split = String.split('') // split the array into single char
-    let reverse = split.reverse() // arrange the char in reverse
-    let output = reverse.join('') // combine the char into an array
-    console.log(output)
-    
+    let { checkEligible } = this.props.course;
+    console.log(checkEligible)
     return (
       <>
         {/* <h2>Dashboard</h2> */}
@@ -68,33 +69,65 @@ class Dashboard extends Component {
             </h2>
           </CardHeader>
           <CardBody>
-            <h3>Important Message</h3>
+            <h3>Personal Information</h3>
             <div>Name : {user.name.toString().toLowerCase()}</div>
-            <div>Matric No : {user.matricNo}</div>
-            <div>Status : {user.description}</div>
             <div>Role : {user.role}</div>
           </CardBody>
           <CardFooter>
-            <div>This is footer</div>
+            <div className="small"></div>
             {data.map}
           </CardFooter>
         </Card>
 
-        <Card>
+        {checkEligible.type !== 1 ? (
+          <Card>
           <CardBody>
-            <div className="text-center h1">
-              Course Registration 2022/2023 Semester 1 will open on
-            </div>
-            <div className="text-center h3">25 October 2021</div>
-            <div className="text-center h3">12:00 am</div>
-            <div className="text-center">
-              Countdown:{" "}
-              {this.state.timeAgo.format(
-                new Date("2022-04-12 16:49:00").getTime()
-              )}
-            </div>
-          </CardBody>
-        </Card>
+
+          {checkEligible.type === 2 || checkEligible.type === 3 ? (
+            <><div className="text-center h1">{"Registration session is in schedule"}</div>
+            <div className="text-center h3">
+                {Dates.format(
+                  checkEligible.data.startDateTime,
+                  Dates.FORMAT.DATE_TIME5
+                )}
+                {" - "}
+                {Dates.format(
+                  checkEligible.data.endDateTime,
+                  Dates.FORMAT.DATE_TIME5
+                )}
+              </div>
+
+              </>
+
+          ):(<div className="text-center h1">{checkEligible.message}</div>)}
+
+            </CardBody>
+            </Card>
+        ) : (
+          <Card>
+            <CardBody>
+              <div className="text-center h1">{checkEligible.message}</div>
+              <div className="text-center h3">
+                {Dates.format(
+                  checkEligible.data.startDateTime,
+                  Dates.FORMAT.DATE4
+                )}
+              </div>
+              <div className="text-center h3">
+                {Dates.format(
+                  checkEligible.data.startDateTime,
+                  Dates.FORMAT.TIME4
+                )}
+              </div>
+              <div className="text-center">
+                Countdown:{" "}
+                {countdown(
+                  new Date(checkEligible.data.startDateTime)
+                ).toString()}
+              </div>
+            </CardBody>
+          </Card>
+        )}
       </>
     );
   }

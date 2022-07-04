@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { CourseActions } from "../../../__actions";
 import BarChart from './BarChart';
 import RegisteredList from './RegisteredList';
-import { StudentActions } from "../../../__actions";
+import { StudentActions, CourseActions } from "../../../__actions";
 
 //icon
 import { Icon } from '@iconify/react';
@@ -22,29 +21,16 @@ import {
 class Statistic extends Component {
   componentDidMount() {
     StudentActions.getListStudent(this.props.dispatch);
+    CourseActions.getLatestData(this.props.dispatch);
+
   }
   render() {
     let {data} = this.props.student
+    let {dataCount} = this.props.course
     return (
       <div>
-        Statistic
         <Row>
-          <Col sm={4}>
-            <Card >
-              <CardBody>
-                <Row>
-                <Col sm={4}>
-
-                <Icon icon={accountMultipleCheck} color="black" height="100" />
-                </Col>
-                <Col sm={8} className=' text-lg-center'>
-                <p className=''>Total Registered Student</p>
-                </Col>
-                </Row>
-              </CardBody>
-            </Card>
-          </Col>
-          <Col sm={4}>
+          <Col sm={12}>
           <Card className='shadow p-3 mb-5 bg-white rounded'>
               <CardBody>
               <h4 style={{ textAlignVertical: "center", textAlign: "center", }}>
@@ -59,21 +45,21 @@ class Statistic extends Component {
               </CardBody>
             </Card>
           </Col>
-          <Col sm={4}>
+          {/* <Col sm={4}>
           <Card className='shadow p-3 mb-5 bg-white rounded'>
               <CardBody>
               <h4 style={{ textAlignVertical: "center", textAlign: "center", }}>
 
                 </h4>
                 <h1 style={{ textAlignVertical: "center", textAlign: "center", color: "grey" }}>
-                  {76}
+                  {dataCount.length}
                 </h1>
                 <h4 style={{ textAlignVertical: "center", textAlign: "center", }}>
-                  Total  Student Registered
+                  Total Course Registered
                 </h4>
               </CardBody>
             </Card>
-          </Col>
+          </Col> */}
         </Row>
         {/* <BarChart></BarChart> */}
       <RegisteredList></RegisteredList>

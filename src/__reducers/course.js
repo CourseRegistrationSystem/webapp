@@ -2,6 +2,7 @@ import { CONSTANTS } from "../api";
 
 let initState = {
   data: [],
+  dataCount: [],
   session: [],
   graph: null,
   message: "",
@@ -200,7 +201,7 @@ export function course(state = initState, action) {
 
     case CONSTANTS.COURSE.LATEST_DATA_SUCCESS:
       __state = { ...state };
-      __state.data = action.result;
+      __state.dataCount = action.result;
 
       return __state;
 
@@ -328,32 +329,25 @@ export function course(state = initState, action) {
       __state = { ...state };
       console.log(__state);
       __state.curriculumList = action.result;
+      __state.curriculumList.sesi = action.sesi;
+      __state.curriculumList.semester = action.semester;
 
-      function userExists(kod_subjek) {
-        return action.result.some(function (el) {
-          // console.log(el.kod_subjek.substr(el.kod_subjek.length - 4))
-          return el.kod_subjek.substr(el.kod_subjek.length - 4) === kod_subjek;
-        });
-      }
+      // function userExists(kod_subjek) {
+      //   return action.result.some(function (el) {
+      //     return el.kod_subjek.substr(el.kod_subjek.length - 4) === kod_subjek;
+      //   });
+      // }
 
-      console.log(__state.data);
-      __state.data.map((data, index) => {
-        let back = data.kod_subjek.substr(data.kod_subjek.length - 4);
+      // console.log(__state.data);
+      // __state.data.map((data, index) => {
+      //   let back = data.kod_subjek.substr(data.kod_subjek.length - 4);
+      //   console.log(userExists(back));
+      //   if (userExists(back) === false) {
+      //     console.log(data.nama_subjek, data.kod_subjek);
+      //   }
 
-        // action.result.some(function(el) {
-        //   console.log(el.kod_subjek.substr(data.kod_subjek.length - 4))
-
-        //   return el.kod_subjek.substr(data.kod_subjek.length - 4) === back
-        // })
-
-        console.log(userExists(back));
-
-        if (userExists(back) === false) {
-          console.log(data.nama_subjek, data.kod_subjek);
-        }
-
-        // console.log(action.result.includes(back))
-      });
+      //   // console.log(action.result.includes(back))
+      // });
 
       console.log(__state.data);
       return __state;

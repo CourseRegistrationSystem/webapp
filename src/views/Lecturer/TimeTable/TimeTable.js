@@ -192,11 +192,11 @@ class TimeTable extends Component {
                 {selectedTimeTable.length === 0 ? (
                   <tr>
                     <td align="center" colSpan="8">
-                      No Data
+                    Loading ...
                     </td>
                   </tr>
-                ) : 
-                
+                ) :
+
                 (
                   time.map((time, indexTime) => {
                     return (
@@ -213,7 +213,7 @@ class TimeTable extends Component {
                             return (
                               <td key={indexDay}>
                                 {selectedTimeTable.map((data, index) => {
-                                  
+
                                   if (
                                     data.masa === indexTime + 1 &&
                                     data.hari === day
@@ -274,22 +274,22 @@ class TimeTable extends Component {
                   <th>Subject Code</th>
                   <th>Section</th>
                   <th>Subject Name</th>
-                  
+
                   <th>Lecturer Name</th>
-                
+
                 </tr>
               </thead>
 
               <tbody className="mb-5 text-center">
                 {selectedSession.length === 0 ? (
                   <tr>
-                    <td align="center" colSpan="4">
-                      No Data
+                    <td align="center" colSpan="5">
+                    Loading ...
                     </td>
                   </tr>
-                ) : 
+                ) :
                 (
-                  selectedSession.map((data,index) => 
+                  selectedSession.map((data,index) =>
                     <CoursesRow
                       key={index}
                       data = {data}
@@ -298,7 +298,7 @@ class TimeTable extends Component {
 
                     </CoursesRow>
                   )
-                  
+
                 )}
                 </tbody>
                 </Table>
@@ -311,11 +311,11 @@ class TimeTable extends Component {
 }
 
 class CoursesRow extends Component {
-  
+
   render() {
     let data = this.props.data
     let numbers = this.props.index
-    let number = numbers + 1 
+    let number = numbers + 1
     // console.log(data)
     let row = 10;
     return (
@@ -332,7 +332,7 @@ class CoursesRow extends Component {
       <td align="left">
       {data.nama_subjek}
       </td>
-      
+
       <td align="left">
       {data.lecturer.map((data,index) => {
         return(
@@ -342,7 +342,7 @@ class CoursesRow extends Component {
         )
       })}
       </td>
-    </tr>  
+    </tr>
     )
   }
 }

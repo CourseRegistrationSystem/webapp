@@ -57,7 +57,7 @@ class GroupSectionInformation extends Component {
 
     let { sectionListById } = this.props.section;
     let { checkEligible} = this.props.course
-    console.log(sectionListById.length);
+    console.log(sectionListById.length,checkEligible);
     return (
       <>
         <Card className="shadow animated fadeIn rounded">
@@ -90,7 +90,7 @@ class GroupSectionInformation extends Component {
                   <td>:</td>
                   <td>{checkEligible.data?(checkEligible.data.semester):("No schedule")}</td>
                 </tr>
-               
+
               </tbody>
             </Table>
           </CardBody>
@@ -101,7 +101,7 @@ class GroupSectionInformation extends Component {
             <h3 className="p-2">Section Members</h3>
             <Card>
               <CardGroup>
-                {sectionListById.length === 0
+                {sectionListById.length === 0 || checkEligible.type === 4
                   ? "No Data Recorded"
                   : sectionListById.map((dataList, index) => {
                       // console.log(dataList)
@@ -214,12 +214,10 @@ class SectionList extends Component {
         color="primary"
         onClick={this.toggleModelShow}
       >
-        Do Something
+        Close
       </Button>
       {' '}
-      <Button onClick={this.toggleModelShow}>
-        Cancel
-      </Button>
+    
     </ModalFooter>
           </Modal>
     </Card>
