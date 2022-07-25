@@ -202,7 +202,7 @@ class RegistrationTable extends Component {
             </Form>
             <Row>
               <Table
-                className="table table-hover table-outline mb-0 d-none d-sm-table"
+                className="table table-hover table-outline mb-0 d-none d-sm-table ml-3 mr-3 mt-3"
                 hover
               >
                 <thead className="thead-light">
